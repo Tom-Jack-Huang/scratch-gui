@@ -3,6 +3,7 @@ import {Form, Input, Modal, message, Button} from 'antd';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import bindAll from "lodash.bindall";
+import {get} from '@hlTools/HLAxios.js'
 import './LoginMenu.less'
 const FormItem = Form.Item;
 
@@ -11,7 +12,8 @@ class LoginMenu extends Component {
         super(props);
         bindAll(this,[
             'submitLogin',
-            'cancelClick'
+            'cancelClick',
+            'requestUrl'
         ]);
     }
     submitLogin(e) {
@@ -19,10 +21,9 @@ class LoginMenu extends Component {
         e.stopPropagation();
 
         this.props.form.validateFields((err, values)=>{
-            if (err){
-                message.error('提交有误');
-            }  else  {
+            if (!err){
                 console.log(values);
+                this.requestUrl(values.userName,values.passWord);
                 this.props.closeLoginMenu();
             }
         });
@@ -32,6 +33,16 @@ class LoginMenu extends Component {
         //阻止事件冒泡
         e.stopPropagation();
         this.props.closeLoginMenu();
+    };
+
+    requestUrl(username,password) {
+        console.log(username,password);
+        // get('',{
+        //     userName:username,
+        //     passWord:password
+        // }).then(res=>{
+        //
+        // });
     };
 
     render() {

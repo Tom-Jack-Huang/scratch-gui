@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c08ae9f-949b-4f77-ac48-0765d8b15e8b" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/account-nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/account-nav.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/blocks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/blocks.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/HLAxios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/HLAxios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/scratch-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/scratch-logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/user-avatar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/user-avatar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/account-nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/account-nav.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/make-toolbox-xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/make-toolbox-xml.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/static/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
@@ -21,28 +25,46 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="503" column="68" selection-start-line="503" selection-start-column="57" selection-end-line="503" selection-end-column="68" />
+            <state relative-caret-position="449">
+              <caret line="940" column="24" lean-forward="true" selection-start-line="940" selection-start-column="24" selection-end-line="940" selection-end-column="24" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
                 <element signature="e#713#756#0" expanded="true" />
+                <element signature="e#31098#33666#0" />
+                <element signature="e#32887#33330#0" />
+                <element signature="e#33867#36349#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/sb-file-uploader.jsx">
+        <entry file="file://$PROJECT_DIR$/src/reducers/userInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-303">
-              <caret line="178" column="21" selection-start-line="178" selection-start-column="4" selection-end-line="178" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="56">
+              <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/reducers/menus.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-401">
+              <caret line="10" column="18" selection-start-line="10" selection-end-line="10" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/menu-bar/user-avatar.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-95">
+              <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -50,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="80" column="27" lean-forward="true" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
+            <state relative-caret-position="-2537">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -60,43 +82,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/hlTools/HLAxios.js">
+        <entry file="file://$PROJECT_DIR$/src/apis/api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="112">
+              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+            <state relative-caret-position="153">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/modals.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="81" column="43" lean-forward="true" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/menu-bar/LoginMenu.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="11" lean-forward="true" selection-start-column="1" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -116,6 +117,12 @@
       <find>requestProjectUpload</find>
       <find>defineMessages</find>
       <find>onLoadingFinished</find>
+      <find>onOpenRegistration</find>
+      <find>resolve</find>
+      <find>onClickLogo</find>
+      <find>mystuffIcon</find>
+      <find>onLogOut</find>
+      <find>onLogOutClick</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,22 +133,28 @@
       <list>
         <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/src/playground/index.css" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/components/gui/gui.jsx" />
         <option value="$PROJECT_DIR$/package-lock.json" />
         <option value="$PROJECT_DIR$/src/containers/blocks.jsx" />
         <option value="$PROJECT_DIR$/src/lib/make-toolbox-xml.js" />
         <option value="$PROJECT_DIR$/src/components/menu-bar/LoginMenu.less" />
-        <option value="$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx" />
-        <option value="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" />
         <option value="$PROJECT_DIR$/src/hlTools/HLAxios.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx" />
+        <option value="$PROJECT_DIR$/src/apis/api.js" />
         <option value="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/src/containers/account-nav.jsx" />
+        <option value="$PROJECT_DIR$/src/components/menu-bar/account-nav.jsx" />
+        <option value="$PROJECT_DIR$/src/components/menu-bar/user-avatar.css" />
+        <option value="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" />
+        <option value="$PROJECT_DIR$/src/reducers/userInfo.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="268" />
-    <option name="y" value="42" />
+    <option name="x" value="215" />
+    <option name="y" value="29" />
     <option name="width" value="1639" />
     <option name="height" value="936" />
   </component>
@@ -153,6 +166,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -169,32 +183,12 @@
               <item name="scratch-gui" type="b2602c69:ProjectViewProjectNode" />
               <item name="scratch-gui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="scratch-gui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="scratch-gui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="menu-bar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="scratch-gui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="scratch-gui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="hlTools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="scratch-gui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="scratch-gui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="playground" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -236,26 +230,21 @@
       <option name="presentableId" value="Default" />
       <updated>1563247225951</updated>
       <workItem from="1563247228906" duration="11670000" />
+      <workItem from="1563330405293" duration="11055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11670000" />
+    <option name="totallyTimeSpent" value="22725000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="215" y="63" width="1639" height="936" extended-state="0" />
+    <frame x="215" y="29" width="1639" height="936" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="npm" side_tool="true" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17304075" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17492163" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" weight="0.32899868" />
-      <window_info anchor="bottom" id="RNConsole" show_stripe_button="false" weight="0.32899868" />
-      <window_info anchor="bottom" id="Terminal" sideWeight="0.4996865" weight="0.087061666" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.50031346" side_tool="true" weight="0.32769832" />
-      <window_info anchor="bottom" id="调试" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.40182054" />
@@ -263,10 +252,16 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Json Parser" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" weight="0.32899868" />
+      <window_info anchor="bottom" id="RNConsole" order="9" show_stripe_button="false" weight="0.32899868" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50031346" side_tool="true" weight="0.32769832" />
+      <window_info anchor="bottom" id="调试" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4996865" visible="true" weight="0.15840387" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Json Parser" order="3" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,13 +290,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="137" column="6" selection-start-line="137" selection-start-column="6" selection-end-line="137" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-175">
@@ -315,16 +303,6 @@
           <caret line="326" column="30" selection-start-line="326" selection-start-column="30" selection-end-line="326" selection-end-column="30" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="97" column="72" selection-start-line="97" selection-start-column="72" selection-end-line="97" selection-end-column="72" />
-          <folding>
-            <element signature="e#2712#3185#0" />
           </folding>
         </state>
       </provider>
@@ -370,7 +348,30 @@
     <entry file="file://$PROJECT_DIR$/src/components/menu-bar/LoginMenu.less">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="11" lean-forward="true" selection-start-column="1" selection-end-column="11" />
+          <caret column="11" selection-start-column="1" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="70" column="28" lean-forward="true" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/default-project/e6ddc55a6ddd9cc9d84fe0b4c21e016f.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/default-project/cd21514d0531fdffb22204e0ec5ed84a.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/sb-file-uploader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="178" column="21" selection-start-line="178" selection-start-column="4" selection-end-line="178" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -384,51 +385,147 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx">
+    <entry file="file://$PROJECT_DIR$/src/lib/default-project/b7853f557e4426412e64bb3da6531a99.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="503" column="68" selection-start-line="503" selection-start-column="57" selection-end-line="503" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-            <element signature="e#713#756#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="439">
+          <caret line="144" column="26" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/modals.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="549">
-          <caret line="81" column="43" lean-forward="true" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
+          <caret line="81" column="43" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/sb-file-uploader.jsx">
+    <entry file="file://$PROJECT_DIR$/src/apis/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-303">
-          <caret line="178" column="21" selection-start-line="178" selection-start-column="4" selection-end-line="178" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="112">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx">
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="80" column="27" lean-forward="true" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="196">
+          <caret line="40" column="53" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        <state relative-caret-position="153">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/account-nav.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="45" column="84" selection-start-line="45" selection-start-column="84" selection-end-line="45" selection-end-column="84" />
+          <folding>
+            <element signature="e#157#195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/menu-bar/user-avatar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/menu-bar/user-avatar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-95">
+          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/menu-bar/account-nav.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2145">
+          <caret line="43" column="23" lean-forward="true" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2537">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/gui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2573">
+          <caret line="58" column="23" lean-forward="true" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/mode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-826" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/vm-status.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/vm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/locales.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="940" column="24" lean-forward="true" selection-start-line="940" selection-start-column="24" selection-end-line="940" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#713#756#0" expanded="true" />
+            <element signature="e#31098#33666#0" />
+            <element signature="e#32887#33330#0" />
+            <element signature="e#33867#36349#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/userInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/menus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-401">
+          <caret line="10" column="18" selection-start-line="10" selection-end-line="10" selection-end-column="18" />
         </state>
       </provider>
     </entry>

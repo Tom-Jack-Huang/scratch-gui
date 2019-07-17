@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { injectIntl} from 'react-intl';
-import {getAB} from '../hlTools/HLAxios.js';
+import {getAB} from '@hlTools/HLAxios';
 import {
     openLoadingProject,
     closeLoadingProject
@@ -19,6 +19,7 @@ class autoLoadFile extends Component {
 
     loading () {
         this.props.onLoadingStarted();
+
         getAB('uploads/lqyx.sb3')
             .then((res) => {
                 console.log(res);

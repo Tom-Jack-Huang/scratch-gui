@@ -32,7 +32,14 @@ const base = {
         ReactDOM: 'react-dom'
     },
     resolve: {
-        symlinks: false
+        symlinks: false,
+        alias:{
+            '@apis':path.join(__dirname,'src/apis/api.js'),
+            '@components':path.join(__dirname,'src/components'),
+            '@hlTools':path.join(__dirname,'src/hlTools'),
+            '@lib':path.join(__dirname,'src/lib'),
+            '@image':path.join(__dirname,'src/images')
+        }
     },
     module: {
         rules: [{

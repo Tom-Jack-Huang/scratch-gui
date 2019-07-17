@@ -76,10 +76,10 @@ import scratchLogo from './scratch-logo.svg';
 
 import sharedMessages from '../../lib/shared-messages';
 
-import AutoLoadFile from '../../hlTools/autoLoadFile.jsx';
+import AutoLoadFile from '@hlTools/autoLoadFile.jsx';
 
-import LoginMenu from './loginMenu.jsx'
-import './menul.less'
+import LoginMenu from './loginMenu.jsx';
+import './menul.less';
 import {Icon, message} from 'antd';
 
 const ariaMessages = defineMessages({
@@ -153,7 +153,7 @@ class MenuBar extends React.Component {
     // state = {
     //     visible:false
     // }
-    constructor(props) {
+    constructor (props) {
         super(props);
         bindAll(this, [
             'handleClickNew',
@@ -170,46 +170,52 @@ class MenuBar extends React.Component {
             'handleZNLanage',
             'handleENLanage',
             'onClickLogoMy',
-            'loginClick'
+            'loginClick',
+            'onLogOutClick'
         ]);
 
     }
 
-    componentDidMount() {
+    componentDidMount () {
         document.addEventListener('keydown', this.handleKeyPress);
         // this.netLoading();
         // loadFile('123',this.props.vm);
 
     }
 
-    componentWillUnmount() {
+    componentWillUnmount () {
         document.removeEventListener('keydown', this.handleKeyPress);
     }
 
-    handleENLanage() {
+    handleENLanage () {
 
         this.props.onChangeLanguage('en');
         document.documentElement.lang = 'en';
         // document.documentElement.lang = newLocale;
     }
 
-    handleZNLanage() {
+    handleZNLanage () {
         this.props.onChangeLanguage('zh-cn');
         document.documentElement.lang = 'zh-cn';
     }
 
-    onClickLogoMy() {
+    onClickLogoMy () {
         console.log('45646');
-        message.success('This is a success message');
+        message.success('https://scratch.mit.edu');
+        // window.location = 'https://scratch.mit.edu';
     }
 
-    loginClick(e) {
+    loginClick (e) {
         console.log('66666', e.target.nodeName);
         e.stopPropagation();
         this.props.onClickLogin();
     }
 
-    handleClickNew() {
+    onLogOutClick () {
+        console.log('退出登录');
+    }
+
+    handleClickNew () {
         // if the project is dirty, and user owns the project, we will autosave.
         // but if they are not logged in and can't save, user should consider
         // downloading or logging in first.
@@ -225,22 +231,22 @@ class MenuBar extends React.Component {
         this.props.onRequestCloseFile();
     }
 
-    handleClickRemix() {
+    handleClickRemix () {
         this.props.onClickRemix();
         this.props.onRequestCloseFile();
     }
 
-    handleClickSave() {
+    handleClickSave () {
         this.props.onClickSave();
         this.props.onRequestCloseFile();
     }
 
-    handleClickSaveAsCopy() {
+    handleClickSaveAsCopy () {
         this.props.onClickSaveAsCopy();
         this.props.onRequestCloseFile();
     }
 
-    handleClickSeeCommunity(waitForUpdate) {
+    handleClickSeeCommunity (waitForUpdate) {
         if (this.props.shouldSaveBeforeTransition()) {
             this.props.autoUpdateProject(); // save before transitioning to project page
             waitForUpdate(true); // queue the transition to project page
@@ -249,7 +255,7 @@ class MenuBar extends React.Component {
         }
     }
 
-    handleClickShare(waitForUpdate) {
+    handleClickShare (waitForUpdate) {
         console.log('handleClickShare');
         if (!this.props.isShared) {
             if (this.props.canShare) { // save before transitioning to project page
@@ -264,14 +270,14 @@ class MenuBar extends React.Component {
         }
     }
 
-    handleRestoreOption(restoreFun) {
+    handleRestoreOption (restoreFun) {
         return () => {
             restoreFun();
             this.props.onRequestCloseEdit();
         };
     }
 
-    handleKeyPress(event) {
+    handleKeyPress (event) {
         const modifier = bowser.mac ? event.metaKey : event.ctrlKey;
         if (modifier && event.key === 's') {
             this.props.onClickSave();
@@ -279,7 +285,7 @@ class MenuBar extends React.Component {
         }
     }
 
-    handleSaveToComputer(downloadProjectCallback) {
+    handleSaveToComputer (downloadProjectCallback) {
         return () => {
             this.props.onRequestCloseFile();
             downloadProjectCallback();
@@ -290,13 +296,13 @@ class MenuBar extends React.Component {
         };
     }
 
-    handleLanguageMouseUp(e) {
+    handleLanguageMouseUp (e) {
         if (!this.props.languageMenuOpen) {
             this.props.onClickLanguage(e);
         }
     }
 
-    restoreOptionMessage(deletedItem) {
+    restoreOptionMessage (deletedItem) {
         switch (deletedItem) {
             case 'Sprite':
                 return (<FormattedMessage
@@ -326,7 +332,7 @@ class MenuBar extends React.Component {
         }
     }
 
-    render() {
+    render () {
         const saveNowMessage = (
             <FormattedMessage
                 defaultMessage="Save now"
@@ -681,6 +687,9 @@ class MenuBar extends React.Component {
                         this.props.username ? (
                             // ************ user is logged in ************
                             <React.Fragment>
+
+                                {/*
+                                 //文件夹----不知道有啥作用
                                 <a href="/mystuff/">
                                     <div
                                         className={classNames(
@@ -695,6 +704,8 @@ class MenuBar extends React.Component {
                                         />
                                     </div>
                                 </a>
+                                */}
+                                {/*头像*/}
                                 <AccountNav
                                     className={classNames(
                                         styles.menuBarItem,
@@ -706,12 +717,14 @@ class MenuBar extends React.Component {
                                     menuBarMenuClassName={classNames(styles.menuBarMenu)}
                                     onClick={this.props.onClickAccount}
                                     onClose={this.props.onRequestCloseAccount}
-                                    onLogOut={this.props.onLogOut}
+                                    // onLogOut={this.props.onLogOut}
+                                    onLogOut={this.onLogOutClick}
                                 />
                             </React.Fragment>
                         ) : (
                             // ********* user not logged in, but a session exists
                             // ********* so they can choose to log in
+                            //登录按钮
                             <React.Fragment>
                                 {/*
                                     //加入scratch
@@ -899,7 +912,7 @@ const mapStateToProps = (state, ownProps) => {
         loginMenuOpen: loginMenuOpen(state),
         projectTitle: state.scratchGui.projectTitle,
         sessionExists: true, //state.session && typeof state.session.session !== 'undefined',
-        username: user ? user.username : null,
+        username:user ? user.username : null,
         userOwnsProject: ownProps.authorUsername && user &&
             (ownProps.authorUsername === user.username),
         vm: state.scratchGui.vm

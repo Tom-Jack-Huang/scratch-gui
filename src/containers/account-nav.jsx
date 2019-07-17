@@ -11,6 +11,8 @@ import {connect} from 'react-redux';
 
 import AccountNavComponent from '../components/menu-bar/account-nav.jsx';
 
+import defimag1 from '@image/defAccount1.png'
+
 const AccountNav = function (props) {
     const {
         ...componentProps
@@ -40,9 +42,9 @@ const mapStateToProps = state => ({
     profileUrl: state.session && state.session.session && state.session.session.user ?
         `/users/${state.session.session.user.username}` : '',
     thumbnailUrl: state.session && state.session.session && state.session.session.user ?
-        state.session.session.user.thumbnailUrl : null,
+        state.session.session.user.thumbnailUrl : defimag1,
     username: state.session && state.session.session && state.session.session.user ?
-        state.session.session.user.username : ''
+        state.session.session.user.username : '123'
 });
 
 const mapDispatchToProps = () => ({});
