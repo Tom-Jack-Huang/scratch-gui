@@ -38,7 +38,8 @@ const base = {
             '@components':path.join(__dirname,'src/components'),
             '@hlTools':path.join(__dirname,'src/hlTools'),
             '@lib':path.join(__dirname,'src/lib'),
-            '@image':path.join(__dirname,'src/images')
+            '@image':path.join(__dirname,'src/images'),
+            '@reducers':path.join(__dirname,'src/reducers')
         }
     },
     module: {
@@ -107,8 +108,8 @@ const base = {
                     loader: "less-loader", // compiles Less to CSS,
                     options:{
                         modifyVars:{
-                            'primary-color': ' #1890ff',
-                            'link-color': ' #1890ff',
+                            'primary-color': ' #50a8e7',
+                            'link-color': ' #000000',
                             // 'border-radius-base': '2px'
                         },
                         javascriptEnabled: true,
@@ -173,7 +174,7 @@ module.exports = [
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'gui'],
                 template: 'src/playground/index.ejs',
-                title: 'Scratch 3.0 GUI',
+                title: 'PX GUI',
                 sentryConfig: process.env.SENTRY_CONFIG ? '"' + process.env.SENTRY_CONFIG + '"' : null
             }),
             new HtmlWebpackPlugin({

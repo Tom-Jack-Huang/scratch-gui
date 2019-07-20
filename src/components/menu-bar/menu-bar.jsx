@@ -59,7 +59,7 @@ import {
     closeLoginMenu,
     loginMenuOpen
 } from '../../reducers/menus';
-
+import {setUserInfo} from '@reducers/userInfo';
 import collectMetadata from '../../lib/collect-metadata';
 import locales from 'scratch-l10n';
 
@@ -201,8 +201,8 @@ class MenuBar extends React.Component {
 
     onClickLogoMy () {
         console.log('45646');
-        message.success('https://scratch.mit.edu');
-        // window.location = 'https://scratch.mit.edu';
+        // message.success('https://scratch.mit.edu');
+        window.location = 'http://192.168.2.170:8088/edu';
     }
 
     loginClick (e) {
@@ -213,6 +213,7 @@ class MenuBar extends React.Component {
 
     onLogOutClick () {
         console.log('退出登录');
+        this.props.onRequestCloseAccount();
     }
 
     handleClickNew () {
@@ -407,7 +408,7 @@ class MenuBar extends React.Component {
                             })}
                             onMouseUp={this.props.onClickLanguage}
                         >
-                            <div className="bg">
+                            <div>
                                 <img
                                     className={styles.languageIcon}
                                     src={languageIcon}
@@ -764,12 +765,13 @@ class MenuBar extends React.Component {
                                         renderLogin={this.props.renderLogin}
                                         onClose={this.props.onRequestCloseLogin}
                                         /> */}
+                                </div>
+                                <div>
                                     <LoginMenu
                                         closeLoginMenu={this.props.onRequestCloseLogin}
                                         visible={this.props.loginMenuOpen}
                                     />
                                 </div>
-
                             </React.Fragment>
                         )
                     ) : (
@@ -898,8 +900,10 @@ MenuBar.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => {
+    // console.log(state);
     const loadingState = state.scratchGui.projectState.loadingState;
-    const user = state.session && state.session.session && state.session.session.user;
+    // const user = state.session && state.session.session && state.session.session.user;
+    const user = state.scratchGui.userInfo && state.scratchGui.userInfo.user;
     return {
         accountMenuOpen: accountMenuOpen(state),
         fileMenuOpen: fileMenuOpen(state),
@@ -912,7 +916,7 @@ const mapStateToProps = (state, ownProps) => {
         loginMenuOpen: loginMenuOpen(state),
         projectTitle: state.scratchGui.projectTitle,
         sessionExists: true, //state.session && typeof state.session.session !== 'undefined',
-        username:user ? user.username : null,
+        username:user ? user.userName : null,
         userOwnsProject: ownProps.authorUsername && user &&
             (ownProps.authorUsername === user.username),
         vm: state.scratchGui.vm
@@ -923,7 +927,10 @@ const mapDispatchToProps = dispatch => ({
     autoUpdateProject: () => dispatch(autoUpdateProject()),
     onOpenTipLibrary: () => dispatch(openTipsLibrary()),
     onClickAccount: () => dispatch(openAccountMenu()),
-    onRequestCloseAccount: () => dispatch(closeAccountMenu()),
+    onRequestCloseAccount: () => {
+        dispatch(closeAccountMenu());
+        dispatch(setUserInfo({}));
+    },
     onClickFile: () => dispatch(openFileMenu()),
     onRequestCloseFile: () => dispatch(closeFileMenu()),
     onClickEdit: () => dispatch(openEditMenu()),

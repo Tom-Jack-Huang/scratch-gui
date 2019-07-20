@@ -720,7 +720,16 @@ const myBlocks = function () {
 
 const xmlOpen = '<xml style="display: none">';
 const xmlClose = '</xml>';
-
+const xmlArray = [
+    'motionXML',
+    'looksXML',
+    'soundXML',
+    'eventsXML',
+    'controlXML',
+    'sensingXML',
+    'operatorsXML',
+    'variablesXML'
+];
 /**
  * @param {!boolean} isStage - Whether the toolbox is for a stage-type target.
  * @param {?string} targetId - The current editing target
@@ -731,10 +740,11 @@ const xmlClose = '</xml>';
  * @param {?string} costumeName - The name of the default selected costume dropdown.
  * @param {?string} backdropName - The name of the default selected backdrop dropdown.
  * @param {?string} soundName -  The name of the default selected sound dropdown.
+ * @param {?array} xmls - 添加左侧功能块
  * @returns {string} - a ScratchBlocks-style XML document for the contents of the toolbox.
  */
 const makeToolboxXML = function (isStage, targetId, categoriesXML = [],
-                                 costumeName = '', backdropName = '', soundName = '') {
+                                 costumeName = '', backdropName = '', soundName = '',xmls = xmlArray) {
     const gap = [categorySeparator];
 
     costumeName = xmlEscape(costumeName);
@@ -760,20 +770,53 @@ const makeToolboxXML = function (isStage, targetId, categoriesXML = [],
     const operatorsXML = moveCategory('operators') || operators(isStage, targetId);
     const variablesXML = moveCategory('data') || variables(isStage, targetId);
     const myBlocksXML = moveCategory('procedures') || myBlocks(isStage, targetId);
-
     const everything = [
-        xmlOpen,
-        motionXML, gap,
-        looksXML, gap,
-        soundXML, gap,
-        eventsXML, gap,
-        controlXML, gap,
-        sensingXML, gap,
-        operatorsXML, gap,
-        variablesXML, gap,
-        myBlocksXML
+        xmlOpen
     ];
 
+
+    xmls.map(item => {
+        if (item === 'motionXML') {
+            everything.push(motionXML);
+            everything.push(gap);
+        } else if (item === 'looksXML') {
+            everything.push(looksXML);
+            everything.push(gap);
+        } else if (item === 'soundXML') {
+            everything.push(soundXML);
+            everything.push(gap);
+        } else if (item === 'eventsXML') {
+            everything.push(eventsXML);
+            everything.push(gap);
+        } else if (item === 'controlXML') {
+            everything.push(controlXML);
+            everything.push(gap);
+        } else if (item === 'sensingXML') {
+            everything.push(sensingXML);
+            everything.push(gap);
+        } else if (item === 'operatorsXML') {
+            everything.push(operatorsXML);
+            everything.push(gap);
+        } else if (item === 'variablesXML') {
+            everything.push(variablesXML);
+            everything.push(gap);
+        }
+    });
+    everything.push(myBlocksXML);
+
+    // const everything = [
+    //     xmlOpen,
+    //     motionXML, gap,
+    //     looksXML, gap,
+    //     soundXML, gap,
+    //     eventsXML, gap,
+    //     controlXML, gap,
+    //     sensingXML, gap,
+    //     operatorsXML, gap,
+    //     variablesXML, gap,
+    //     myBlocksXML
+    // ];
+    // console.log(everything);
     for (const extensionCategory of categoriesXML) {
         everything.push(gap, extensionCategory.xml);
     }

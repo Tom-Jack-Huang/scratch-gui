@@ -35,12 +35,19 @@ export function get (url, params = {}) {
         // 结束 loading
         // proxyUtil.endLoading()
         // 返回后端返回数据
+        //判断
+        // let data = response.data;
+        // if (data.state === 200) {
+        //     return response.data;
+        // }
         return response.data
     }).catch(error => {
         // 异常处理
         // proxyUtil.endLoading()
         // proxyUtil.alertMessage(error)
+
         message.error(error);
+        return error;
     })
 }
 export function post (url, params = {}) {
@@ -55,6 +62,7 @@ export function post (url, params = {}) {
         // proxyUtil.endLoading()
         // proxyUtil.alertMessage(error)
         message.error(error);
+        return error;
     })
 }
 
@@ -67,11 +75,13 @@ export function getAB (url, params = {}) {
     }).then(response => {
         // 结束 loading
         // proxyUtil.endLoading()
+
         return response
     }).catch(error => {
         // 异常处理
         // proxyUtil.endLoading()
         // proxyUtil.alertMessage(error)
         message.error(error);
+        return error;
     })
 }

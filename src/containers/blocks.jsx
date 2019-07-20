@@ -31,6 +31,8 @@ import {
     SOUNDS_TAB_INDEX
 } from '../reducers/editor-tab';
 
+import {getleftData} from '@apis'
+
 const addFunctionListener = (object, property, callback) => {
     const oldFn = object[property];
     object[property] = function () {
@@ -80,7 +82,8 @@ class Blocks extends React.Component {
 
         this.state = {
             workspaceMetrics: {},
-            prompt: null
+            prompt: null,
+            xml:null
         };
         this.onTargetsUpdate = debounce(this.onTargetsUpdate, 100);
         this.toolboxUpdateQueue = [];
@@ -128,7 +131,6 @@ class Blocks extends React.Component {
         // @todo change this when blockly supports UI events
         addFunctionListener(this.workspace, 'translate', this.onWorkspaceMetricsChange);
         addFunctionListener(this.workspace, 'zoom', this.onWorkspaceMetricsChange);
-
         this.attachVM();
         // Only update blocks/vm locale when visible to avoid sizing issues
         // If locale changes while not visible it will get handled in didUpdate
@@ -136,7 +138,37 @@ class Blocks extends React.Component {
             this.setLocale();
         }
 
+        // this.NetWorking();
     }
+
+    NetWorking(){
+        getleftData().then(res=>{
+            if (res.state === 200) {
+                // Use try/catch because this requires digging pretty deep into the VM
+                // Code inside intentionally ignores several error situations (no stage, etc.)
+                // Because they would get caught by this try/catch
+                this.state.xmls = res.data;
+
+                this.attachVM();
+                // Only update blocks/vm locale when visible to avoid sizing issues
+                // If locale changes while not visible it will get handled in didUpdate
+                if (this.props.isVisible) {
+                    this.setLocale();
+                }
+            }
+
+        }).catch(err=>{
+            console.log(err);
+
+            this.attachVM();
+            // Only update blocks/vm locale when visible to avoid sizing issues
+            // If locale changes while not visible it will get handled in didUpdate
+            if (this.props.isVisible) {
+                this.setLocale();
+            }
+        });
+    }
+
     shouldComponentUpdate (nextProps, nextState) {
         return (
             this.state.prompt !== nextState.prompt ||
@@ -341,20 +373,27 @@ class Blocks extends React.Component {
             const targetCostumes = target.getCostumes();
             const targetSounds = target.getSounds();
             const dynamicBlocksXML = this.props.vm.runtime.getBlocksXML();
-
+            const cusxml =  this.state.xmls;
 
             return makeToolboxXML(target.isStage, target.id, dynamicBlocksXML,
                 targetCostumes[0].name,
                 stageCostumes[0].name,
-                targetSounds.length > 0 ? targetSounds[0].name : ''
+                targetSounds.length > 0 ? targetSounds[0].name : '',
+                cusxml
             );
 
         } catch {
+            console.log('为什么会异常');
             return null;
         }
     }
     onWorkspaceUpdate (data) {
+        this.onWorkspaceUpdateFun(data);
+    }
+
+    onWorkspaceUpdateFun (data) {
         // When we change sprites, update the toolbox to have the new sprite's blocks
+        console.log('onWorkspaceUpdateFun');
         const toolboxXML = this.getToolboxXML();
         if (toolboxXML) {
             this.props.updateToolboxState(toolboxXML);
@@ -399,6 +438,7 @@ class Blocks extends React.Component {
         // workspace to be 'undone' here.
         this.workspace.clearUndo();
     }
+
     handleExtensionAdded (categoryInfo) {
         const defineBlocks = blockInfoArray => {
             if (blockInfoArray && blockInfoArray.length > 0) {
@@ -435,6 +475,7 @@ class Blocks extends React.Component {
         defineBlocks(categoryInfo.blocks);
 
         // Update the toolbox with new blocks if possible
+        console.log('handleExtensionAdded');
         const toolboxXML = this.getToolboxXML();
         if (toolboxXML) {
             this.props.updateToolboxState(toolboxXML);

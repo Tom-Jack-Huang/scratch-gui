@@ -1,7 +1,14 @@
-import {getAB} from '@hlTools/HLAxios.js';
+import {getAB,get} from '@hlTools/HLAxios.js';
 
-export const autoLoadab3 = getAB('uploads/lqyx.sb3').then(res=>{
-   return res;
-}).then(err=>{
-    return err;
-});
+const autoLoadab3 = ()=>{
+    return getAB('uploads/lqyx.sb3');
+};
+
+const getleftData = ()=>{
+    return get('getleftData');
+};
+
+export {
+    autoLoadab3,
+    getleftData
+}
