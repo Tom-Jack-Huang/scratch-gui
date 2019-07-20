@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 
 import AccountNavComponent from '../components/menu-bar/account-nav.jsx';
 
-import defimag1 from '@image/defAccount1.png'
+import defimag1 from '@image/defAccount1.png';
 
 const AccountNav = function (props) {
     const {
@@ -34,18 +34,21 @@ AccountNav.propTypes = {
     username: PropTypes.string
 };
 
-const mapStateToProps = state => ({
-    classroomId: state.session && state.session.session && state.session.session.user ?
-        state.session.session.user.classroomId : '',
-    isEducator: state.session && state.session.permissions && state.session.permissions.educator,
-    isStudent: state.session && state.session.permissions && state.session.permissions.student,
-    profileUrl: state.session && state.session.session && state.session.session.user ?
-        `/users/${state.session.session.user.username}` : '',
-    thumbnailUrl: state.session && state.session.session && state.session.session.user ?
-        state.session.session.user.thumbnailUrl : defimag1,
-    username: state.session && state.session.session && state.session.session.user ?
-        state.session.session.user.username : '123'
-});
+const mapStateToProps = state => {
+    const user = state.scratchGui.userInfo && state.scratchGui.userInfo.user;
+    return {
+        classroomId: user.classroomId ?
+            user.classroomId : '',
+        isEducator: false,
+        isStudent: false,
+        profileUrl: user.profileUrl ?
+            user.profileUrl : '',
+        thumbnailUrl: user.thumbnailUrl ?
+            user.thumbnailUrl : defimag1,
+        username: user ?
+            user.userName : '123'
+    };
+};
 
 const mapDispatchToProps = () => ({});
 

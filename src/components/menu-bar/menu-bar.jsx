@@ -81,6 +81,7 @@ import AutoLoadFile from '@hlTools/autoLoadFile.jsx';
 import LoginMenu from './loginMenu.jsx';
 import './menul.less';
 import {Icon, message} from 'antd';
+import Cookies from 'js-cookie';
 
 const ariaMessages = defineMessages({
     language: {
@@ -213,6 +214,12 @@ class MenuBar extends React.Component {
 
     onLogOutClick () {
         console.log('退出登录');
+        Cookies.remove('JSESSIONID');
+        Cookies.remove('avatarThumb');
+        Cookies.remove('firstLogin');
+        Cookies.remove('mobile');
+        Cookies.remove('token');
+        Cookies.remove('userName');
         this.props.onRequestCloseAccount();
     }
 
@@ -443,16 +450,7 @@ class MenuBar extends React.Component {
                                             <Icon type="check" className={classNames(styles.lanageIconL)}/>
                                         </span>
                                     </MenuItem>
-                                    {/* {
-                                        ['zh-cn', 'en']
-                                            .map(locale => (
-
-                                        ))
-
-                                    } */}
-
                                 </MenuSection>
-
                             </MenuBarMenu>
                         </div>
                         <div
@@ -579,9 +577,24 @@ class MenuBar extends React.Component {
                             </MenuBarMenu>
                         </div>
                     </div>
-                    {/*
-                    //虚线
+
                     <Divider className={classNames(styles.divider)} />
+                    <div className={classNames(styles.menuBarItem, styles.growable)}
+
+                    >
+                        <MenuBarItemTooltip
+                            enable
+                            id="title-field"
+                        >
+                            <ProjectTitleInput
+                                className={classNames(styles.titleFieldGrowable)}
+                                onUpdateProjectTitle={this.props.onUpdateProjectTitle}
+                            />
+                        </MenuBarItemTooltip>
+                    </div>
+                    <Divider className={classNames(styles.divider)} />
+                    {/*
+
                     //教程按钮
                     <div
                         aria-label={this.props.intl.formatMessage(ariaMessages.tutorials)}
@@ -717,8 +730,8 @@ class MenuBar extends React.Component {
                                     isRtl={this.props.isRtl}
                                     menuBarMenuClassName={classNames(styles.menuBarMenu)}
                                     onClick={this.props.onClickAccount}
-                                    onClose={this.props.onRequestCloseAccount}
-                                    // onLogOut={this.props.onLogOut}
+                                    onClose={this.props.closeAccountMenu}
+                                    // onLogOut={this.props.onLogOut} this.props.onRequestCloseAccount
                                     onLogOut={this.onLogOutClick}
                                 />
                             </React.Fragment>
@@ -916,10 +929,11 @@ const mapStateToProps = (state, ownProps) => {
         loginMenuOpen: loginMenuOpen(state),
         projectTitle: state.scratchGui.projectTitle,
         sessionExists: true, //state.session && typeof state.session.session !== 'undefined',
-        username:user ? user.userName : null,
+        username: user ? user.userName : null,
         userOwnsProject: ownProps.authorUsername && user &&
             (ownProps.authorUsername === user.username),
-        vm: state.scratchGui.vm
+        vm: state.scratchGui.vm,
+        closeAccountMenu: PropTypes.func
     };
 };
 
@@ -931,6 +945,7 @@ const mapDispatchToProps = dispatch => ({
         dispatch(closeAccountMenu());
         dispatch(setUserInfo({}));
     },
+    closeAccountMenu: () => dispatch(closeAccountMenu()),
     onClickFile: () => dispatch(openFileMenu()),
     onRequestCloseFile: () => dispatch(closeFileMenu()),
     onClickEdit: () => dispatch(openEditMenu()),

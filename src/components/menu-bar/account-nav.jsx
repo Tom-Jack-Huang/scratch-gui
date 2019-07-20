@@ -67,6 +67,16 @@ const AccountNavComponent = ({
             place={isRtl ? 'right' : 'left'}
             onRequestClose={onClose}
         >
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/course/my'>
+                我的课程
+            </MenuItemContainer>
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/order/my'>
+                我的订单
+            </MenuItemContainer>
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/user'>
+               账号设置
+            </MenuItemContainer>
+            {/*
             <MenuItemContainer href={profileUrl}>
                 <FormattedMessage
                     defaultMessage="Profile"
@@ -106,6 +116,7 @@ const AccountNavComponent = ({
                     id="gui.accountMenu.accountSettings"
                 />
             </MenuItemContainer>
+            */}
             <MenuSection>
                 <MenuItemContainer onClick={onLogOut}>
                     <FormattedMessage

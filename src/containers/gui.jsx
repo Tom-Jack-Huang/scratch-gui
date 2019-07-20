@@ -39,6 +39,10 @@ import cloudManagerHOC from '../lib/cloud-manager-hoc.jsx';
 import GUIComponent from '../components/gui/gui.jsx';
 import {setIsScratchDesktop} from '../lib/isScratchDesktop.js';
 
+import {setUserInfo} from '@reducers/userInfo'
+
+import Cookies from 'js-cookie'
+
 const messages = defineMessages({
     defaultProjectTitle: {
         id: 'gui.gui.defaultProjectTitle',
@@ -53,7 +57,24 @@ class GUI extends React.Component {
         this.setReduxTitle(this.props.projectTitle);
         this.props.onStorageInit(storage);
         this.props.onVmInit(this.props.vm);
+        this.getUserInfoFromCook();
     }
+
+    getUserInfoFromCook(){
+        if (!this.props.isLogin)  {//未登录的情况下去查查
+            let users = {
+                token: Cookies.get('token'),
+                JSESSIONID:Cookies.get('JSESSIONID'),
+                avatarThumb:Cookies.get('avatarThumb'),
+                firstLogin:Cookies.get('firstLogin'),
+                mobile:Cookies.get('mobile'),
+                userName:Cookies.get('userName'),
+            };
+            this.props.setCookeUserInfo(users);
+        }
+
+    }
+
     componentDidUpdate (prevProps) {
         if (this.props.projectId !== prevProps.projectId && this.props.projectId !== null) {
             this.props.onUpdateProjectId(this.props.projectId);
@@ -69,9 +90,8 @@ class GUI extends React.Component {
     }
     setReduxTitle (newTitle) {
         if (newTitle === null || typeof newTitle === 'undefined') {
-            this.props.onUpdateReduxProjectTitle(
-                this.props.intl.formatMessage(messages.defaultProjectTitle)
-            );
+            this.props.onUpdateReduxProjectTitle('');
+            //this.props.intl.formatMessage(messages.defaultProjectTitle)
         } else {
             this.props.onUpdateReduxProjectTitle(newTitle);
         }
@@ -93,6 +113,8 @@ class GUI extends React.Component {
             onStorageInit,
             onUpdateProjectId,
             onUpdateReduxProjectTitle,
+            isLogin,
+            setCookeUserInfo,
             onVmInit,
             projectHost,
             projectId,
@@ -138,7 +160,9 @@ GUI.propTypes = {
     projectId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     projectTitle: PropTypes.string,
     telemetryModalVisible: PropTypes.bool,
-    vm: PropTypes.instanceOf(VM).isRequired
+    vm: PropTypes.instanceOf(VM).isRequired,
+    setCookeUserInfo:PropTypes.func,
+    isLogin:PropTypes.bool
 };
 
 GUI.defaultProps = {
@@ -151,6 +175,7 @@ GUI.defaultProps = {
 
 const mapStateToProps = state => {
     const loadingState = state.scratchGui.projectState.loadingState;
+    const user = state.scratchGui.userInfo && state.scratchGui.userInfo.user;
     return {
         activeTabIndex: state.scratchGui.editorTab.activeTabIndex,
         alertsVisible: state.scratchGui.alerts.visible,
@@ -175,7 +200,8 @@ const mapStateToProps = state => {
         ),
         telemetryModalVisible: state.scratchGui.modals.telemetryModal,
         tipsLibraryVisible: state.scratchGui.modals.tipsLibrary,
-        vm: state.scratchGui.vm
+        vm: state.scratchGui.vm,
+        isLogin:!!(user && user.token)
     };
 };
 
@@ -187,7 +213,10 @@ const mapDispatchToProps = dispatch => ({
     onRequestCloseBackdropLibrary: () => dispatch(closeBackdropLibrary()),
     onRequestCloseCostumeLibrary: () => dispatch(closeCostumeLibrary()),
     onRequestCloseTelemetryModal: () => dispatch(closeTelemetryModal()),
-    onUpdateReduxProjectTitle: title => dispatch(setProjectTitle(title))
+    onUpdateReduxProjectTitle: title => dispatch(setProjectTitle(title)),
+    setCookeUserInfo:user=>{
+        dispatch(setUserInfo(user));
+    }
 });
 
 const ConnectedGUI = injectIntl(connect(

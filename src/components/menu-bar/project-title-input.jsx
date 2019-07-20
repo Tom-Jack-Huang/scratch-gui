@@ -38,7 +38,7 @@ class ProjectTitleInput extends React.Component {
             <BufferedInput
                 className={classNames(styles.titleField, this.props.className)}
                 maxLength="100"
-                placeholder={this.props.intl.formatMessage(messages.projectTitlePlaceholder)}
+                placeholder="请输入作品名称"
                 tabIndex="0"
                 type="text"
                 value={this.props.projectTitle}
