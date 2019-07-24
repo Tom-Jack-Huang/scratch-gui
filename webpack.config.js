@@ -32,15 +32,7 @@ const base = {
         ReactDOM: 'react-dom'
     },
     resolve: {
-        symlinks: false,
-        alias:{
-            '@apis':path.join(__dirname,'src/apis/api.js'),
-            '@components':path.join(__dirname,'src/components'),
-            '@hlTools':path.join(__dirname,'src/hlTools'),
-            '@lib':path.join(__dirname,'src/lib'),
-            '@image':path.join(__dirname,'src/images'),
-            '@reducers':path.join(__dirname,'src/reducers')
-        }
+        symlinks: false
     },
     module: {
         rules: [{
@@ -62,60 +54,36 @@ const base = {
                     '@babel/plugin-proposal-object-rest-spread',
                     ['react-intl', {
                         messagesDir: './translations/messages/'
-                    }],
-                    ["import", {"libraryName": "antd", "style": true}]],
-                presets: [
-                    ['@babel/preset-env', {targets: {browsers: ['last 3 versions', 'Safari >= 8', 'iOS >= 8']}}],
-                    '@babel/preset-react'
-                ]
+                    }]],
+                presets: ['@babel/preset-env', '@babel/preset-react']
             }
         },
-            {
-                test: /\.css$/,
-                use: [{
-                    loader: 'style-loader'
-                }, {
-                    loader: 'css-loader',
-                    options: {
-                        modules: true,
-                        importLoaders: 1,
-                        localIdentName: '[name]_[local]_[hash:base64:5]',
-                        camelCase: true
+        {
+            test: /\.css$/,
+            use: [{
+                loader: 'style-loader'
+            }, {
+                loader: 'css-loader',
+                options: {
+                    modules: true,
+                    importLoaders: 1,
+                    localIdentName: '[name]_[local]_[hash:base64:5]',
+                    camelCase: true
+                }
+            }, {
+                loader: 'postcss-loader',
+                options: {
+                    ident: 'postcss',
+                    plugins: function () {
+                        return [
+                            postcssImport,
+                            postcssVars,
+                            autoprefixer
+                        ];
                     }
-                }, {
-                    loader: 'postcss-loader',
-                    options: {
-                        ident: 'postcss',
-                        plugins: function () {
-                            return [
-                                postcssImport,
-                                postcssVars,
-                                autoprefixer({
-                                    browsers: ['last 3 versions', 'Safari >= 8', 'iOS >= 8']
-                                })
-                            ];
-                        }
-                    }
-                }]
-            },
-            {
-                test: /\.less$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader", // compiles Less to CSS,
-                    options:{
-                        modifyVars:{
-                            'primary-color': ' #50a8e7',
-                            'link-color': ' #000000',
-                            // 'border-radius-base': '2px'
-                        },
-                        javascriptEnabled: true,
-                    }
-                }]
+                }
             }]
+        }]
     },
     optimization: {
         minimizer: [
@@ -174,26 +142,26 @@ module.exports = [
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'gui'],
                 template: 'src/playground/index.ejs',
-                title: 'Scratch3.0 创作 - 云尚编程',
+                title: 'Scratch 3.0 GUI',
                 sentryConfig: process.env.SENTRY_CONFIG ? '"' + process.env.SENTRY_CONFIG + '"' : null
             }),
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'blocksonly'],
                 template: 'src/playground/index.ejs',
                 filename: 'blocks-only.html',
-                title: 'Scratch3.0 创作 - 云尚编程: Blocks Only Example'
+                title: 'Scratch 3.0 GUI: Blocks Only Example'
             }),
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'compatibilitytesting'],
                 template: 'src/playground/index.ejs',
                 filename: 'compatibility-testing.html',
-                title: 'Scratch3.0 创作 - 云尚编程: Compatibility Testing'
+                title: 'Scratch 3.0 GUI: Compatibility Testing'
             }),
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'player'],
                 template: 'src/playground/index.ejs',
                 filename: 'player.html',
-                title: 'Scratch3.0 创作 - 云尚编程: Player Example'
+                title: 'Scratch 3.0 GUI: Player Example'
             }),
             new CopyWebpackPlugin([{
                 from: 'static',
