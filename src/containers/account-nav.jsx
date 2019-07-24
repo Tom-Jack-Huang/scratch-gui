@@ -41,12 +41,12 @@ const mapStateToProps = state => {
             user.classroomId : '',
         isEducator: false,
         isStudent: false,
-        profileUrl: user.profileUrl ?
-            user.profileUrl : '',
-        thumbnailUrl: user.thumbnailUrl ?
-            user.thumbnailUrl : defimag1,
+        profileUrl: user.avator ?
+            user.avator : '',
+        thumbnailUrl: user.avatarThumb ?
+            (user.avatarThumb === 'undefined'?defimag1:user.avatarThumb) : defimag1,
         username: user ?
-            user.userName : '123'
+            user.userName : ''
     };
 };
 

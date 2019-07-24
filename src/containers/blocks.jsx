@@ -158,7 +158,6 @@ class Blocks extends React.Component {
             }
 
         }).catch(err=>{
-            console.log(err);
 
             this.attachVM();
             // Only update blocks/vm locale when visible to avoid sizing issues
@@ -167,6 +166,9 @@ class Blocks extends React.Component {
                 this.setLocale();
             }
         });
+        //可能要判断是否需要改变 isplayer的状态
+
+
     }
 
     shouldComponentUpdate (nextProps, nextState) {
@@ -231,17 +233,19 @@ class Blocks extends React.Component {
         }, 0);
     }
     setLocale () {
-        this.ScratchBlocks.ScratchMsgs.setLocale(this.props.locale);
-        this.props.vm.setLocale(this.props.locale, this.props.messages)
-            .then(() => {
-                this.workspace.getFlyout().setRecyclingEnabled(false);
-                this.props.vm.refreshWorkspace();
-                this.requestToolboxUpdate();
-                this.withToolboxUpdates(() => {
-                    this.workspace.getFlyout().setRecyclingEnabled(true);
-                });
-            });
 
+        if (!this.props.isPlayerOnly) {
+            this.ScratchBlocks.ScratchMsgs.setLocale(this.props.locale);
+            this.props.vm.setLocale(this.props.locale, this.props.messages)
+                .then(() => {
+                    this.workspace.getFlyout().setRecyclingEnabled(false);
+                    this.props.vm.refreshWorkspace();
+                    this.requestToolboxUpdate();
+                    this.withToolboxUpdates(() => {
+                        this.workspace.getFlyout().setRecyclingEnabled(true);
+                    });
+                });
+        }
     }
 
     updateToolbox () {
@@ -383,7 +387,6 @@ class Blocks extends React.Component {
             );
 
         } catch {
-            console.log('为什么会异常');
             return null;
         }
     }
@@ -475,7 +478,6 @@ class Blocks extends React.Component {
         defineBlocks(categoryInfo.blocks);
 
         // Update the toolbox with new blocks if possible
-        console.log('handleExtensionAdded');
         const toolboxXML = this.getToolboxXML();
         if (toolboxXML) {
             this.props.updateToolboxState(toolboxXML);
@@ -571,6 +573,7 @@ class Blocks extends React.Component {
             onRequestCloseExtensionLibrary,
             onRequestCloseCustomProcedures,
             toolboxXML,
+            isPlayerOnly,
             ...props
         } = this.props;
         /* eslint-enable no-unused-vars */
@@ -654,7 +657,8 @@ Blocks.propTypes = {
     stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired,
     toolboxXML: PropTypes.string,
     updateToolboxState: PropTypes.func,
-    vm: PropTypes.instanceOf(VM).isRequired
+    vm: PropTypes.instanceOf(VM).isRequired,
+    isPlayerOnly:PropTypes.bool
 };
 
 Blocks.defaultOptions = {
@@ -688,7 +692,8 @@ Blocks.defaultOptions = {
 
 Blocks.defaultProps = {
     isVisible: true,
-    options: Blocks.defaultOptions
+    options: Blocks.defaultOptions,
+    isPlayerOnly:false
 };
 
 const mapStateToProps = state => ({
@@ -701,7 +706,8 @@ const mapStateToProps = state => ({
     locale: state.locales.locale,
     messages: state.locales.messages,
     toolboxXML: state.scratchGui.toolbox.toolboxXML,
-    customProceduresVisible: state.scratchGui.customProcedures.active
+    customProceduresVisible: state.scratchGui.customProcedures.active,
+    isPlayerOnly: state.scratchGui.mode.isPlayerOnly
 });
 
 const mapDispatchToProps = dispatch => ({

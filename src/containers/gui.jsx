@@ -40,7 +40,7 @@ import GUIComponent from '../components/gui/gui.jsx';
 import {setIsScratchDesktop} from '../lib/isScratchDesktop.js';
 
 import {setUserInfo} from '@reducers/userInfo'
-
+import {setPlayer} from '@reducers/mode';
 import Cookies from 'js-cookie'
 
 const messages = defineMessages({
@@ -59,6 +59,9 @@ class GUI extends React.Component {
         this.props.onVmInit(this.props.vm);
         this.getUserInfoFromCook();
     }
+    componentWillMount () {
+        // this.props.loadIsPlayer();
+    }
 
     getUserInfoFromCook(){
         if (!this.props.isLogin)  {//未登录的情况下去查查
@@ -68,7 +71,9 @@ class GUI extends React.Component {
                 avatarThumb:Cookies.get('avatarThumb'),
                 firstLogin:Cookies.get('firstLogin'),
                 mobile:Cookies.get('mobile'),
-                userName:Cookies.get('userName'),
+                nickName:Cookies.get('nickName'),
+                avator:Cookies.get('avator'),
+                userName:Cookies.get('userName')
             };
             this.props.setCookeUserInfo(users);
         }
@@ -124,6 +129,7 @@ class GUI extends React.Component {
             fetchingProject,
             isLoading,
             loadingStateVisible,
+            loadIsPlayer,
             ...componentProps
         } = this.props;
         return (
@@ -162,7 +168,8 @@ GUI.propTypes = {
     telemetryModalVisible: PropTypes.bool,
     vm: PropTypes.instanceOf(VM).isRequired,
     setCookeUserInfo:PropTypes.func,
-    isLogin:PropTypes.bool
+    isLogin:PropTypes.bool,
+    loadIsPlayer:PropTypes.func
 };
 
 GUI.defaultProps = {
@@ -216,7 +223,8 @@ const mapDispatchToProps = dispatch => ({
     onUpdateReduxProjectTitle: title => dispatch(setProjectTitle(title)),
     setCookeUserInfo:user=>{
         dispatch(setUserInfo(user));
-    }
+    },
+    loadIsPlayer:()=>dispatch(setPlayer(true))
 });
 
 const ConnectedGUI = injectIntl(connect(

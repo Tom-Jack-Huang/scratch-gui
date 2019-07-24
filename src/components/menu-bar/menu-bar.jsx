@@ -201,25 +201,23 @@ class MenuBar extends React.Component {
     }
 
     onClickLogoMy () {
-        console.log('45646');
         // message.success('https://scratch.mit.edu');
         window.location = 'http://192.168.2.170:8088/edu';
     }
 
     loginClick (e) {
-        console.log('66666', e.target.nodeName);
         e.stopPropagation();
         this.props.onClickLogin();
     }
 
     onLogOutClick () {
-        console.log('退出登录');
         Cookies.remove('JSESSIONID');
-        Cookies.remove('avatarThumb');
-        Cookies.remove('firstLogin');
         Cookies.remove('mobile');
+        Cookies.remove('firstLogin');
         Cookies.remove('token');
         Cookies.remove('userName');
+        Cookies.remove('avatarThumb');
+        Cookies.remove('avator');
         this.props.onRequestCloseAccount();
     }
 
@@ -264,7 +262,6 @@ class MenuBar extends React.Component {
     }
 
     handleClickShare (waitForUpdate) {
-        console.log('handleClickShare');
         if (!this.props.isShared) {
             if (this.props.canShare) { // save before transitioning to project page
                 this.props.onShare();
@@ -779,12 +776,6 @@ class MenuBar extends React.Component {
                                         onClose={this.props.onRequestCloseLogin}
                                         /> */}
                                 </div>
-                                <div>
-                                    <LoginMenu
-                                        closeLoginMenu={this.props.onRequestCloseLogin}
-                                        visible={this.props.loginMenuOpen}
-                                    />
-                                </div>
                             </React.Fragment>
                         )
                     ) : (
@@ -835,6 +826,12 @@ class MenuBar extends React.Component {
                             ) : []}
                         </React.Fragment>
                     )}
+                    <div>
+                        <LoginMenu
+                            closeLoginMenu={this.props.onRequestCloseLogin}
+                            visible={this.props.loginMenuOpen}
+                        />
+                    </div>
                 </div>
 
             </Box>
@@ -913,9 +910,10 @@ MenuBar.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log(state);
+
     const loadingState = state.scratchGui.projectState.loadingState;
     // const user = state.session && state.session.session && state.session.session.user;
+
     const user = state.scratchGui.userInfo && state.scratchGui.userInfo.user;
     return {
         accountMenuOpen: accountMenuOpen(state),

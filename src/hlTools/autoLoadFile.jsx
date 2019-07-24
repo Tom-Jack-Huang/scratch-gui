@@ -8,6 +8,7 @@ import {
     closeLoadingProject
 } from '../reducers/modals';
 import {LoadingStates, onLoadedProject} from '../reducers/project-state';
+import {getAB} from '@hlTools/HLAxios';
 
 
 class autoLoadFile extends Component {
@@ -18,29 +19,28 @@ class autoLoadFile extends Component {
     }
 
     loading () {
-        // this.props.onLoadingStarted();
-        //
-        // getAB('uploads/lqyx.sb3')
-        //     .then((res) => {
-        //         console.log(res);
-        //
-        //         const filename = 'xx.sb3';
-        //         this.props.vm.loadProject(res.data)
-        //             .then(() => {
-        //                 console.log('55555555555555555');
-        //                 this.props.onLoadingFinished(this.props.loadingState, true);
-        //                 // // Reset the file input after project is loaded
-        //                 // // This is necessary in case the user wants to reload a project
-        //                 if (filename) {
-        //                     const uploadedProjectTitle = this.getProjectTitleFromFilename(filename);
-        //                     this.props.onUpdateProjectTitle(uploadedProjectTitle);
-        //                 }
-        //             })
-        //             .catch(error => {
-        //                 // log.warn(error);
-        //                 this.props.onLoadingFinished(this.props.loadingState, true);
-        //             });
-        //     });
+        this.props.onLoadingStarted();
+
+        getAB('uploads/lqyx.sb3')
+            .then((res) => {
+
+                const filename = 'xx.sb3';
+                this.props.vm.loadProject(res.data)
+                    .then(() => {
+                        console.log('55555555555555555');
+                        this.props.onLoadingFinished(this.props.loadingState, true);
+                        // // Reset the file input after project is loaded
+                        // // This is necessary in case the user wants to reload a project
+                        if (filename) {
+                            const uploadedProjectTitle = this.getProjectTitleFromFilename(filename);
+                            this.props.onUpdateProjectTitle(uploadedProjectTitle);
+                        }
+                    })
+                    .catch(error => {
+                        // log.warn(error);
+                        this.props.onLoadingFinished(this.props.loadingState, true);
+                    });
+            });
     }
 
     render () {

@@ -5,7 +5,10 @@ import PropTypes from 'prop-types';
 import bindAll from 'lodash.bindall';
 import {setUserInfo, isPassLogin} from '@reducers/userInfo';
 import classNames from 'classnames';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+import Outils from 'outils';
+import {isShuZi} from '@hlTools/myTools';
+import {getCaptcha, userLogin, getAvatar} from '@apis';
 import './LoginMenu.less';
 
 const FormItem = Form.Item;
@@ -18,74 +21,212 @@ class LoginMenu extends Component {
             'cancelClick',
             'requestUrl',
             'onChangeLoginType',
-            'cancleAlertText'
+            'cancleAlertText',
+            'onGetCaptchaClick',
+            'checkPhone',
+            'checkOtherInput'
         ]);
         this.state = {
-            alertText: ''
+            alertText: '',
+            CaptchaText: '获取验证码',
+            testCap: '',
+            capBtnAble: false,
+            loginTYpe: '0'
         };
     }
 
     submitLogin (e) {
         //阻止事件冒泡
         e.stopPropagation();
-        console.log('点击；额');
-        this.props.form.validateFields((err, values) => {
-            if (!err && values.userName !== '' && values.passWord !== '') {
-                // console.log(values);
-                this.props.closeLoginMenu();
-                this.requestUrl(values);
 
-            } else {
-                if (values.userName === '') {
-                    // message.error('请输入手机号');
-                    this.setState({
-                        alertText: '请输入手机号'
-                    });
-                } else {
-                    if (this.props.pslogin) {
-                        this.setState({
-                            alertText: '请输入密码'
-                        });
-                    } else {
-                        this.setState({
-                            alertText: '请输入验证码'
-                        });
-                    }
-                }
+        this.props.form.validateFields((err, values) => {
+
+            if (this.checkPhone(values.userName) && this.checkOtherInput(values.passWord)) {
+                this.requestUrl(values);
             }
         });
+
     };
-    cancleAlertText(){
+
+    checkPhone (str) {
+        let pass = true;
+        if (str === '') {
+            // message.error('请输入手机号');
+            this.setState({
+                alertText: '请输入手机号'
+            });
+            pass = false;
+        } else if (!Outils.isPhoneNum(str)) {
+            this.setState({
+                alertText: '手机号格式不正确'
+            });
+            pass = false;
+        }
+        return pass;
+    }
+
+    checkOtherInput (str) {
+        let pass = true;
+        if (str === '') {
+            if (this.props.pslogin) {
+                this.setState({
+                    alertText: '请输入密码'
+                });
+            } else {
+                this.setState({
+                    alertText: '请输入验证码'
+                });
+            }
+            pass = false;
+        } else {
+            if (this.props.pslogin && (str.length < 6)) {
+                this.setState({
+                    alertText: '密码格式有误'
+                });
+                pass = false;
+            } else {
+                if (str.length !== 6) {
+                    this.setState({
+                        alertText: '验证码格式有误'
+                    });
+                    pass = false;
+                } else if (!isShuZi(str)) {
+                    this.setState({
+                        alertText: '验证码格式有误'
+                    });
+                    pass = false;
+                }
+
+            }
+        }
+        return pass;
+    }
+
+    cancleAlertText () {
         this.setState({
             alertText: ''
         });
     }
+
     cancelClick (e) {
         //阻止事件冒泡
         e.stopPropagation();
         this.props.closeLoginMenu();
+
     };
+
+    onGetCaptchaClick (e) {
+        e.stopPropagation();
+
+        this.props.form.validateFields((err, values) => {
+
+            if (this.checkPhone(values.userName)) {
+                let timeStr = 60;
+                this.setState({
+                    capBtnAble: true
+                });
+                let interval = setInterval(() => {
+                    if (timeStr <= 0) {
+                        clearInterval(interval);
+                        this.setState({
+                            CaptchaText: '获取验证码',
+                            capBtnAble: false
+                        });
+                    } else {
+                        this.setState({
+                            CaptchaText: timeStr + '秒'
+                        });
+                    }
+                    timeStr--;
+                }, 1000);
+
+
+                getCaptcha(values.userName)
+                    .then(res => {
+                        if (res.status === 0) {
+                            message.success('短信发送成功');
+                            this.setState({
+                                testCap: res.msg
+                            });
+                        } else {
+                            message.error(res.msg);
+                            this.setState({
+                                CaptchaText: '获取验证码',
+                                capBtnAble: false
+                            });
+                        }
+                    })
+                    .catch(err => {
+                        message.error('短信发送失败');
+
+                        clearInterval(interval);
+                        this.setState({
+                            CaptchaText: '获取验证码',
+                            capBtnAble: false
+                        });
+                    });
+
+            }
+        });
+
+    }
+
 
     onChangeLoginType () {
         this.props.changePassLogin(!this.props.pslogin);
+        if (this.props.pslogin) {
+            this.setState({
+                loginTYpe: '1'
+            });
+        } else {
+            this.setState({
+                loginTYpe: '0'
+            });
+        }
     }
 
     requestUrl (values) {
-        console.log(values);
-        this.props.userInfo(values);
-        Cookies.set('JSESSIONID','123');
-        Cookies.set('avatarThumb','123');
-        Cookies.set('firstLogin','123');
-        Cookies.set('mobile',values.userName);
-        Cookies.set('token','123');
-        Cookies.set('userName',values.userName);
-        // get('',{
-        //     userName:username,
-        //     passWord:password
-        // }).then(res=>{
         //
-        // });
+        // Cookies.set('JSESSIONID', '123');
+        //
+
+        userLogin({
+            type: this.state.loginTYpe,
+            mobile: values.userName,
+            captcha: values.passWord,
+            password: values.passWord
+        })
+            .then(res => {
+
+                if (res.status === 0) {
+                    let expireDate = new Date();
+                    expireDate.setTime(expireDate.getTime() + res.data.expires * 1000);
+                    Cookies.set('mobile', values.userName, {expires: 30, path: '/'});
+                    Cookies.set('firstLogin', res.data.firstLogin, {expires: expireDate, path: '/'});
+                    Cookies.set('token', res.data.token, {expires: expireDate, path: '/'});
+                    Cookies.set('nickName', res.data.nickName, {expires: expireDate, path: '/'});
+                    Cookies.set('avatarThumb', res.data.avatarThumb, {expires: expireDate, path: '/'});
+                    Cookies.set('avator', res.data.avator, {expires: expireDate, path: '/'});
+                    Cookies.set('userName', values.userName, {expires: expireDate, path: '/'});
+
+                    let users = {
+                        token: res.data.token,
+                        avatarThumb:res.data.avatarThumb,
+                        firstLogin:res.data.firstLogin,
+                        mobile:values.userName,
+                        nickName:res.data.nickName,
+                        avator:res.data.avator,
+                        userName:values.userName
+                    };
+                    this.props.userInfo(users);
+                    this.props.closeLoginMenu();
+                }
+            })
+            .catch(err => {
+                message.error('登录失败');
+            });
     };
+
 
     render () {
         const {getFieldDecorator} = this.props.form;
@@ -143,7 +284,7 @@ class LoginMenu extends Component {
                             {
                                 getFieldDecorator('passWord',
                                     {
-                                        initialValue: ''
+                                        initialValue: this.state.testCap
                                         // rules: [
                                         //     {required: true}
                                         // ]
@@ -160,14 +301,20 @@ class LoginMenu extends Component {
                                            </span>
                                         </div>
                                     ) : (<div>
-                                        <Input
-                                            placeholder="请输入短信验证码"
-                                            className="ipt"
-                                            style={{width: '225px', float: 'left'}}
-                                            size="small"
-                                        />
-                                        <div className="in_left">
-                                            <a href="javascript:void(0);">获取验证码</a>
+                                        <div>
+                                            <Input
+                                                placeholder="请输入短信验证码"
+                                                className="ipt"
+                                                style={{width: '225px', float: 'left'}}
+                                                size="small"
+                                                value={this.state.testCap}
+                                            />
+                                            <Button className="in_left"
+                                                    onClick={(e) => this.onGetCaptchaClick(e)}
+                                                    disabled={this.state.capBtnAble}
+                                            >
+                                                {this.state.CaptchaText}
+                                            </Button>
                                         </div>
                                         <span className="alert-text">
                                               {this.state.alertText}
@@ -207,10 +354,8 @@ LoginMenu.propTypes = {
     changePassLogin: PropTypes.func
 };
 const mapDispatchToProps = dispatch => ({
-    // closeLoginMenu:()=>dispatch(closeLoginMenu()),
-    userInfo: user => {
-        dispatch(setUserInfo(user));
-    },
+
+    userInfo: user => dispatch(setUserInfo(user)),
     changePassLogin: pslogin => {
         dispatch(isPassLogin(pslogin));
     }
