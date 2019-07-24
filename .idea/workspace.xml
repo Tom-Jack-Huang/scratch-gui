@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c08ae9f-949b-4f77-ac48-0765d8b15e8b" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/apis/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/LoginMenu.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/LoginMenu.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/account-nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/account-nav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/blocks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/blocks.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/gui.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/gui.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/sb3-downloader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/sb3-downloader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/HLAxios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/HLAxios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground/player.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground/player.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
@@ -34,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="292" column="24" selection-start-line="292" selection-start-column="4" selection-end-line="292" selection-end-column="24" />
+            <state relative-caret-position="1795">
+              <caret line="291" lean-forward="true" selection-start-line="291" selection-end-line="291" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
                 <element signature="e#713#756#0" expanded="true" />
@@ -45,6 +31,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webpack.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="242" column="21" lean-forward="true" selection-start-line="242" selection-start-column="21" selection-end-line="242" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hlTools/saveFile.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
@@ -144,7 +139,6 @@
         <option value="$PROJECT_DIR$/src/lib/make-toolbox-xml.js" />
         <option value="$PROJECT_DIR$/src/css/theme.css" />
         <option value="$PROJECT_DIR$/src/reducers/userInfo.js" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/components/menu-bar/account-nav.jsx" />
         <option value="$PROJECT_DIR$/src/components/menu-bar/project-title-input.css" />
         <option value="$PROJECT_DIR$/src/components/menu-bar/project-title-input.jsx" />
@@ -162,12 +156,13 @@
         <option value="$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx" />
         <option value="$PROJECT_DIR$/src/containers/sb3-downloader.jsx" />
         <option value="$PROJECT_DIR$/src/hlTools/saveFile.jsx" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="173" />
-    <option name="y" value="25" />
+    <option name="x" value="214" />
+    <option name="y" value="32" />
     <option name="width" value="1639" />
     <option name="height" value="936" />
   </component>
@@ -285,15 +280,15 @@
       <workItem from="1563601512160" duration="8561000" />
       <workItem from="1563758387161" duration="8253000" />
       <workItem from="1563844321973" duration="13540000" />
-      <workItem from="1563930985251" duration="12040000" />
+      <workItem from="1563930985251" duration="12155000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104976000" />
+    <option name="totallyTimeSpent" value="105091000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="281" y="25" width="1639" height="936" extended-state="0" />
+    <frame x="214" y="32" width="1639" height="936" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16489029" />
@@ -324,13 +319,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/reducers/project-state.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="46" selection-start-line="46" selection-end-line="46" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/mode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="631">
@@ -574,13 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="25" column="23" lean-forward="true" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/blocks.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="637">
@@ -714,10 +695,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/hlTools/saveFile.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="292" column="24" selection-start-line="292" selection-start-column="4" selection-end-line="292" selection-end-column="24" />
+        <state relative-caret-position="1795">
+          <caret line="291" lean-forward="true" selection-start-line="291" selection-end-line="291" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
             <element signature="e#713#756#0" expanded="true" />
@@ -725,10 +713,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hlTools/saveFile.jsx">
+    <entry file="file://$PROJECT_DIR$/../webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="382">
+          <caret line="201" column="36" lean-forward="true" selection-end-line="257" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="242" column="21" lean-forward="true" selection-start-line="242" selection-start-column="21" selection-end-line="242" selection-end-column="21" />
         </state>
       </provider>
     </entry>
