@@ -32,7 +32,15 @@ const base = {
         ReactDOM: 'react-dom'
     },
     resolve: {
-        symlinks: false
+        symlinks: false,
+        alias: {
+            '@apis': path.join(__dirname, 'src/apis/api.js'),
+            '@components': path.join(__dirname, 'src/components'),
+            '@hlTools': path.join(__dirname, 'src/hlTools'),
+            '@lib': path.join(__dirname, 'src/lib'),
+            '@image': path.join(__dirname, 'src/images'),
+            '@reducers': path.join(__dirname, 'src/reducers')
+        }
     },
     module: {
         rules: [{
@@ -54,7 +62,8 @@ const base = {
                     '@babel/plugin-proposal-object-rest-spread',
                     ['react-intl', {
                         messagesDir: './translations/messages/'
-                    }]],
+                    }],
+                    ["import", { "libraryName": "antd", "style": true }]],
                 presets: ['@babel/preset-env', '@babel/preset-react']
             }
         },
@@ -83,7 +92,25 @@ const base = {
                     }
                 }
             }]
-        }]
+        },
+            {
+                test: /\.less$/,
+                use: [{
+                    loader: 'style-loader' // creates style nodes from JS strings
+                }, {
+                    loader: 'css-loader' // translates CSS into CommonJS
+                }, {
+                    loader: 'less-loader', // compiles Less to CSS,
+                    options: {
+                        modifyVars: {
+                            'primary-color': ' #50a8e7',
+                            'link-color': ' #000000'
+                            // 'border-radius-base': '2px'
+                        },
+                        javascriptEnabled: true
+                    }
+                }]
+            }]
     },
     optimization: {
         minimizer: [
