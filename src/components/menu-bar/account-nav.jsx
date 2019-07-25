@@ -18,20 +18,20 @@ import dropdownCaret from './dropdown-caret.svg';
 import styles from './account-nav.css';
 
 const AccountNavComponent = ({
-    className,
-    classroomId,
-    isEducator,
-    isOpen,
-    isRtl,
-    isStudent,
-    menuBarMenuClassName,
-    onClick,
-    onClose,
-    onLogOut,
-    profileUrl,
-    thumbnailUrl,
-    username
-}) => (
+                                 className,
+                                 classroomId,
+                                 isEducator,
+                                 isOpen,
+                                 isRtl,
+                                 isStudent,
+                                 menuBarMenuClassName,
+                                 onClick,
+                                 onClose,
+                                 onLogOut,
+                                 profileUrl,
+                                 thumbnailUrl,
+                                 username
+                             }) => (
     <React.Fragment>
         <div
             className={classNames(
@@ -45,16 +45,19 @@ const AccountNavComponent = ({
                     className={styles.avatar}
                     imageUrl={thumbnailUrl}
                 />
-            ) : null}
-            <span className={styles.profileName}>
+            ) : (
+                <span className={styles.profileName}>
                 {username}
             </span>
+            )}
+            {/*
             <div className={styles.dropdownCaretPosition}>
                 <img
                     className={styles.dropdownCaretIcon}
                     src={dropdownCaret}
                 />
             </div>
+            */}
         </div>
         <MenuBarMenu
             className={menuBarMenuClassName}
@@ -64,6 +67,16 @@ const AccountNavComponent = ({
             place={isRtl ? 'right' : 'left'}
             onRequestClose={onClose}
         >
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/course/my'>
+                我的课程
+            </MenuItemContainer>
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/order/my'>
+                我的订单
+            </MenuItemContainer>
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/user'>
+               账号设置
+            </MenuItemContainer>
+            {/*
             <MenuItemContainer href={profileUrl}>
                 <FormattedMessage
                     defaultMessage="Profile"
@@ -103,6 +116,7 @@ const AccountNavComponent = ({
                     id="gui.accountMenu.accountSettings"
                 />
             </MenuItemContainer>
+            */}
             <MenuSection>
                 <MenuItemContainer onClick={onLogOut}>
                     <FormattedMessage

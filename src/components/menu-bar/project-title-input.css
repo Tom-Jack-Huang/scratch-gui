@@ -8,27 +8,35 @@ can set a width for example or what it should do in a flex box (eg. grow).
 */
 
 .title-field {
-    border: 1px dashed $ui-black-transparent;
-    border-radius: $form-radius;
-    -webkit-border-radius: $form-radius;
-    -moz-border-radius: $form-radius;
-    background-color: $ui-white-transparent;
+    /*border: 1px dashed $ui-black-transparent;*/
+    border: 1px solid #207FC0;
+    /*border-radius: $form-radius;*/
+    border-radius: 6px;
+    /*-webkit-border-radius: $form-radius;*/
+    /*-moz-border-radius: $form-radius;*/
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    /*background-color: $ui-white-transparent;*/
+    background: #428AEF;
     background-clip: padding-box;
     -webkit-background-clip: padding-box;
-    height: auto;
-    padding: .5rem;
+    /*height: auto;*/
+    height: 28px;
+    /*padding: .5rem;*/
+    padding: 8px 24px 8px 8px;
+    font-size: 12px;
 }
 
 .title-field {
     color: $ui-white;
     font-weight: bold;
-    font-size: .8rem;
+    /*font-size: .8rem;*/
 }
 
 .title-field::placeholder {
     color: $ui-white;
     font-weight: normal;
-    font-size: .8rem;
+    /*font-size: .8rem;*/
     font-style: italic;
 }
 
