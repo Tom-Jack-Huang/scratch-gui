@@ -78,6 +78,7 @@ import sharedMessages from '../../lib/shared-messages';
 
 import AutoLoadFile from '@hlTools/autoLoadFile.jsx';
 
+import SaveFile from '@hlTools/saveFile.jsx'
 import LoginMenu from './loginMenu.jsx';
 import './menul.less';
 import {Icon, message} from 'antd';
@@ -166,14 +167,14 @@ class MenuBar extends React.Component {
             'handleKeyPress',
             'handleLanguageMouseUp',
             'handleRestoreOption',
-            'getSaveToComputerHandler',
-            'restoreOptionMessage',
+            'handleSaveToComputer',
             'restoreOptionMessage',
             'handleZNLanage',
             'handleENLanage',
             'onClickLogoMy',
             'loginClick',
-            'onLogOutClick'
+            'onLogOutClick',
+            'handleSaveToServer'
         ]);
 
     }
@@ -291,8 +292,7 @@ class MenuBar extends React.Component {
         }
     }
 
-    getSaveToComputerHandler (downloadProjectCallback) {
-
+    handleSaveToComputer (downloadProjectCallback) {
         return () => {
             this.props.onRequestCloseFile();
             downloadProjectCallback();
@@ -302,7 +302,16 @@ class MenuBar extends React.Component {
             }
         };
     }
-
+    handleSaveToServer(downloadProjectCallback){
+        return () => {
+            this.props.onRequestCloseFile();
+            downloadProjectCallback();
+            if (this.props.onProjectTelemetryEvent) {
+                const metadata = collectMetadata(this.props.vm, this.props.projectTitle, this.props.locale);
+                this.props.onProjectTelemetryEvent('projectDidSave', metadata);
+            }
+        };
+    }
     handleLanguageMouseUp (e) {
         if (!this.props.languageMenuOpen) {
             this.props.onClickLanguage(e);
@@ -402,15 +411,12 @@ class MenuBar extends React.Component {
                                     [styles.clickable]: typeof this.props.onClickLogo !== 'undefined'
                                 })}
                                 draggable={false}
-                                src={this.props.logo}
-                                onClick={this.props.onClickLogo}
                                 src={scratchLogo}
                                 // onClick={this.props.onClickLogo}
                                 onClick={this.onClickLogoMy}
                             />
                             {fileauto}
                         </div>
-
                         <div
                             className={classNames(styles.menuBarItem, styles.hoverable, {
                                 [styles.active]: this.props.languageMenuOpen
@@ -472,78 +478,74 @@ class MenuBar extends React.Component {
                                 place={this.props.isRtl ? 'left' : 'right'}
                                 onRequestClose={this.props.onRequestCloseFile}
                             >
-                                <FormattedMessage
-                                    defaultMessage="File"
-                                    description="Text for file dropdown menu"
-                                    id="gui.menuBar.file"
-                                />
-                                <MenuBarMenu
-                                    className={classNames(styles.menuBarMenu)}
-                                    open={this.props.fileMenuOpen}
-                                    place={this.props.isRtl ? 'left' : 'right'}
-                                    onRequestClose={this.props.onRequestCloseFile}
-                                >
+                                <MenuSection>
+                                    <MenuItem
+                                        isRtl={this.props.isRtl}
+                                        onClick={this.handleClickNew}
+                                    >
+                                        {newProjectMessage}
+                                    </MenuItem>
+                                </MenuSection>
+                                {(this.props.canSave || this.props.canCreateCopy || this.props.canRemix) && (
                                     <MenuSection>
-                                        <MenuItem
-                                            isRtl={this.props.isRtl}
-                                            onClick={this.handleClickNew}
-                                        >
-                                            {newProjectMessage}
-                                        </MenuItem>
+                                        {this.props.canSave ? (
+                                            <MenuItem onClick={this.handleClickSave}>
+                                                {saveNowMessage}
+                                            </MenuItem>
+                                        ) : []}
+                                        {this.props.canCreateCopy ? (
+                                            <MenuItem onClick={this.handleClickSaveAsCopy}>
+                                                {createCopyMessage}
+                                            </MenuItem>
+                                        ) : []}
+                                        {this.props.canRemix ? (
+                                            <MenuItem onClick={this.handleClickRemix}>
+                                                {remixMessage}
+                                            </MenuItem>
+                                        ) : []}
                                     </MenuSection>
-                                    {(this.props.canSave || this.props.canCreateCopy || this.props.canRemix) && (
-                                        <MenuSection>
-                                            {this.props.canSave && (
-                                                <MenuItem onClick={this.handleClickSave}>
-                                                    {saveNowMessage}
-                                                </MenuItem>
-                                            )}
-                                            {this.props.canCreateCopy && (
-                                                <MenuItem onClick={this.handleClickSaveAsCopy}>
-                                                    {createCopyMessage}
-                                                </MenuItem>
-                                            )}
-                                            {this.props.canRemix && (
-                                                <MenuItem onClick={this.handleClickRemix}>
-                                                    {remixMessage}
-                                                </MenuItem>
-                                            )}
-                                        </MenuSection>
-                                    )}
-                                    <MenuSection>
-                                        <SBFileUploader
-                                            canSave={this.props.canSave}
-                                            userOwnsProject={this.props.userOwnsProject}
-                                            onUpdateProjectTitle={this.props.onUpdateProjectTitle}
-                                        >
-                                            {(className, renderFileInput, handleLoadProject) => (
-                                                <MenuItem
-                                                    className={className}
-                                                    onClick={handleLoadProject}
-                                                >
-                                                    {/* eslint-disable max-len */}
-                                                    {this.props.intl.formatMessage(sharedMessages.loadFromComputerTitle)}
-                                                    {/* eslint-enable max-len */}
-                                                    {renderFileInput()}
-                                                </MenuItem>
-                                            )}
-                                        </SBFileUploader>
-                                        <SB3Downloader>{(className, downloadProjectCallback) => (
+                                )}
+                                <MenuSection>
+                                    <SBFileUploader
+                                        canSave={this.props.canSave}
+                                        userOwnsProject={this.props.userOwnsProject}
+                                        onUpdateProjectTitle={this.props.onUpdateProjectTitle}
+                                    >
+                                        {(className, renderFileInput, loadProject) => (
                                             <MenuItem
                                                 className={className}
-                                                onClick={this.getSaveToComputerHandler(downloadProjectCallback)}
+                                                onClick={loadProject}
                                             >
-                                                <FormattedMessage
-                                                    defaultMessage="Save to your computer"
-                                                    description="Menu bar item for downloading a project to your computer" // eslint-disable-line max-len
-                                                    id="gui.menuBar.downloadToComputer"
-                                                />
+                                                {this.props.intl.formatMessage(sharedMessages.loadFromComputerTitle)}
+                                                {renderFileInput()}
                                             </MenuItem>
-                                        )}</SB3Downloader>
-                                    </MenuSection>
-                                </MenuBarMenu>
-                            </div>
-                        )}
+                                        )}
+                                    </SBFileUploader>
+                                    <SB3Downloader>{(className, downloadProjectCallback) => (
+                                        <MenuItem
+                                            className={className}
+                                            onClick={this.handleSaveToComputer(downloadProjectCallback)}
+                                        >
+                                            <FormattedMessage
+                                                defaultMessage="Save to your computer"
+                                                description="Menu bar item for downloading a project to your computer"
+                                                id="gui.menuBar.downloadToComputer"
+                                            />
+                                        </MenuItem>
+                                    )}</SB3Downloader>
+                                    <SaveFile>
+                                        {(className, downloadProjectCallback)=>(
+                                            <MenuItem
+                                                className={className}
+                                                onClick={this.handleSaveToServer(downloadProjectCallback)}
+                                            >
+                                               保存到个人中心
+                                            </MenuItem>
+                                        )}
+                                    </SaveFile>
+                                </MenuSection>
+                            </MenuBarMenu>
+                        </div>
                         <div
                             className={classNames(styles.menuBarItem, styles.hoverable, {
                                 [styles.active]: this.props.editMenuOpen
@@ -864,11 +866,9 @@ MenuBar.propTypes = {
     authorThumbnailUrl: PropTypes.string,
     authorUsername: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     autoUpdateProject: PropTypes.func,
-    canChangeLanguage: PropTypes.bool,
     canCreateCopy: PropTypes.bool,
     canCreateNew: PropTypes.bool,
     canEditTitle: PropTypes.bool,
-    canManageFiles: PropTypes.bool,
     canRemix: PropTypes.bool,
     canSave: PropTypes.bool,
     canShare: PropTypes.bool,
@@ -885,7 +885,6 @@ MenuBar.propTypes = {
     languageMenuOpen: PropTypes.bool,
     locale: PropTypes.string.isRequired,
     loginMenuOpen: PropTypes.bool,
-    logo: PropTypes.string,
     onClickAccount: PropTypes.func,
     onClickEdit: PropTypes.func,
     onClickFile: PropTypes.func,
@@ -921,13 +920,14 @@ MenuBar.propTypes = {
 };
 
 MenuBar.defaultProps = {
-onShare: () => {
-    console.log('fenx');
-},
-renderLogin: () => {
-    console.log('renderLogin');
+    onShare: () => {
+        console.log('fenx');
+    },
+    renderLogin: () => {
+        console.log('renderLogin');
 
-}
+    }
+
 };
 
 const mapStateToProps = (state, ownProps) => {
