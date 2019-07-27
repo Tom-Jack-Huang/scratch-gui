@@ -3,21 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7c08ae9f-949b-4f77-ac48-0765d8b15e8b" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/apis/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/asset-panel/selector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asset-panel/selector.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/gui/gui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gui/gui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/gui/gui.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/gui/gui.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/loginMenu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/gui.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/gui.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/sb3-downloader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/sb3-downloader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/HLAxios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/HLAxios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/saveFile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/saveFile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +92,7 @@
       <workItem from="1563930985251" duration="12155000" />
       <workItem from="1564041184961" duration="5741000" />
       <workItem from="1564102997767" duration="12426000" />
-      <workItem from="1564189846475" duration="5445000" />
+      <workItem from="1564189846475" duration="5993000" />
     </task>
     <servers />
   </component>
