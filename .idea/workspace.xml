@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7c08ae9f-949b-4f77-ac48-0765d8b15e8b" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/blocks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/blocks.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/define-dynamic-block.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/define-dynamic-block.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,6 +95,7 @@
       <workItem from="1564041184961" duration="5741000" />
       <workItem from="1564102997767" duration="12426000" />
       <workItem from="1564189846475" duration="5993000" />
+      <workItem from="1564216196909" duration="365000" />
     </task>
     <servers />
   </component>
