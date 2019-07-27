@@ -3,7 +3,7 @@ import {Form, Input, Modal, message, Button} from 'antd';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import bindAll from 'lodash.bindall';
-import {setUserInfo, isPassLogin} from '@reducers/userInfo';
+import {setUserInfo, isPassLogin,isShowSpin} from '@reducers/userInfo';
 import classNames from 'classnames';
 import Cookies from 'js-cookie';
 import Outils from 'outils';
@@ -189,7 +189,7 @@ class LoginMenu extends Component {
         //
         // Cookies.set('JSESSIONID', '123');
         //
-
+        this.props.onChangeSowSpin(true);
         userLogin({
             type: this.state.loginTYpe,
             mobile: values.userName,
@@ -197,7 +197,7 @@ class LoginMenu extends Component {
             password: values.passWord
         })
             .then(res => {
-
+                this.props.onChangeSowSpin(false);
                 if (res.status === 0) {
                     let expireDate = new Date();
                     expireDate.setTime(expireDate.getTime() + res.data.expires * 1000);
@@ -223,6 +223,7 @@ class LoginMenu extends Component {
                 }
             })
             .catch(err => {
+                this.props.onChangeSowSpin(false);
                 message.error('登录失败');
             });
     };
@@ -351,13 +352,17 @@ LoginMenu.propTypes = {
     closeLoginMenu: PropTypes.func,
     userInfo: PropTypes.func,
     pslogin: PropTypes.bool,
-    changePassLogin: PropTypes.func
+    changePassLogin: PropTypes.func,
+    onChangeSowSpin:PropTypes.func
 };
 const mapDispatchToProps = dispatch => ({
 
     userInfo: user => dispatch(setUserInfo(user)),
     changePassLogin: pslogin => {
         dispatch(isPassLogin(pslogin));
+    },
+    onChangeSowSpin: loading => {
+        dispatch(isShowSpin(loading));
     }
 });
 const mapStateToProps = (state) => {

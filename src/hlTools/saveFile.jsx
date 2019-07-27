@@ -1,13 +1,87 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {projectTitleInitialState} from '@reducers/project-title';
+import {connect} from 'react-redux';
+import bindAll from 'lodash.bindall';
+import {uploadSB3File} from '@apis';
+import {isShowSpin} from '@reducers/userInfo';
+import {message} from 'antd';
+
 
 class SaveFile extends Component {
+    constructor (props) {
+        super(props);
+        bindAll(this, [
+            'downloadProject'
+        ]);
+        this.state = {
+            visible: true
+        };
+    }
+
+    downloadProject () {
+
+        this.props.onChangeSowSpin(true);
+        this.props.saveProjectSb3()
+            .then(content => {
+                uploadSB3File(this.props.projectFilename, content)
+                    .then(res => {
+                        console.log(res);
+                        this.props.onChangeSowSpin(false);
+                        message.success('保存成功');
+                    })
+                    .catch(err => {
+                        this.props.onChangeSowSpin(false);
+                    });
+                console.log(content);
+            });
+        // setTimeout(this.props.onChangeSowSpin(false), 1500);
+    }
+
+
     render () {
-        return (
-            <div>
-                
-            </div>
+        const {
+            children
+        } = this.props;
+        return children(
+            this.props.className,
+            this.downloadProject
         );
     }
 }
 
-export default SaveFile;
+const getProjectFilename = (curTitle, defaultTitle) => {
+    let filenameTitle = curTitle;
+    if (!filenameTitle || filenameTitle.length === 0) {
+        filenameTitle = defaultTitle;
+    }
+    return `${filenameTitle.substring(0, 100)}.sb3`;
+};
+
+SaveFile.propTypes = {
+    children: PropTypes.func,
+    className: PropTypes.string,
+    onSaveFinished: PropTypes.func,
+    projectFilename: PropTypes.string,
+    saveProjectSb3: PropTypes.func,
+    onChangeSowSpin: PropTypes.func
+};
+SaveFile.defaultProps = {
+    className: ''
+};
+
+const mapStateToProps = state => ({
+    saveProjectSb3: state.scratchGui.vm.saveProjectSb3.bind(state.scratchGui.vm),
+    projectFilename: getProjectFilename(state.scratchGui.projectTitle, projectTitleInitialState)
+});
+const mapDispatchToProps = dispatch => ({
+
+    onChangeSowSpin: loading => {
+        dispatch(isShowSpin(loading));
+    }
+});
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SaveFile);
+

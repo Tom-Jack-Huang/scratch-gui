@@ -2,9 +2,10 @@ import axios from 'axios';
 import {message, Spin} from 'antd';
 import Cookies from 'js-cookie';
 
+
 const instance = axios.create({
     baseURL: 'http://192.168.2.170:8088/',
-    timeout: 5000
+    timeout: 60*1000
 });
 
 
@@ -15,8 +16,8 @@ instance.defaults.headers.get['Content-Type'] = 'application/json';
 //请求权限
 let token = Cookies.get('token');
 if (token) {
-    instance.defaults.headers.post['Authorization'] = 'Bearer' + token;
-    instance.defaults.headers.get['Authorization'] = 'Bearer' + token;
+    instance.defaults.headers.post['Authorization'] = 'Bearer ' + token;
+    instance.defaults.headers.get['Authorization'] = 'Bearer ' + token;
 }
 
 
@@ -34,6 +35,12 @@ instance.interceptors.response.use(function (response) {
     return error;
 });
 
+/**
+ * get
+ * @param url
+ * @param params
+ * @returns {Promise<AxiosResponse<T>>}
+ */
 export function get (url, params = {}) {
     // 开始 loading
     // proxyUtil.startLoading()
@@ -45,9 +52,10 @@ export function get (url, params = {}) {
         }
     })
         .then(response => {
-
-            if (response) {
+            if (response && response.status === 200) {
                 return response.data;
+            } else {
+                return {status: 500};
             }
         })
         .catch(error => {
@@ -55,12 +63,20 @@ export function get (url, params = {}) {
         });
 }
 
+/**
+ * post
+ * @param url
+ * @param params
+ * @returns {Promise<AxiosResponse<T>>}
+ */
 export function post (url, params = {}) {
 
     return instance.post(url, params)
         .then(response => {
-            if (response) {
+            if (response && response.status === 200) {
                 return response.data;
+            } else {
+                return {status: 500};
             }
         })
         .catch(error => {
@@ -68,14 +84,57 @@ export function post (url, params = {}) {
         });
 }
 
+/**
+ * 获取sb3文件
+ * @param url
+ * @param params
+ * @returns {Promise<AxiosResponse<T>>}
+ */
 export function getAB (url, params = {}) {
-
-    return instance.get(url, {
+    console.log(url);
+    return instance.get('http://www.passionet.net/group1/M01/2019/07/27/10/42/F696342588A14961B433692ED528643A.blob', {
         params: params,
         responseType: 'arraybuffer'
     })
         .then(response => {
-            return response;
+            console.log(response);
+            if (response && response.status === 200) {
+                return response.data;
+            } else {
+                return {status: 500};
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            return error;
+        });
+}
+
+/**
+ * 上传文件
+ * @param url
+ * @param fileName
+ * @param file
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+export function uploadFile (url, fileName, file) {
+    console.log(fileName);
+    let form = new FormData();
+    form.append('file', file);
+    return instance.post(url, form, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': 'Bearer ' + token
+        }
+    })
+        .then(response => {
+
+            if (response && response.status === 200) {
+                return response.data;
+            } else {
+                return {status: 500};
+            }
+
         })
         .catch(error => {
             return error;

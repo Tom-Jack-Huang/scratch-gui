@@ -43,6 +43,7 @@ import {setUserInfo} from '@reducers/userInfo'
 import {setPlayer} from '@reducers/mode';
 import Cookies from 'js-cookie'
 
+
 const messages = defineMessages({
     defaultProjectTitle: {
         id: 'gui.gui.defaultProjectTitle',
@@ -77,7 +78,8 @@ class GUI extends React.Component {
             };
             this.props.setCookeUserInfo(users);
         }
-
+        let str=location.href;
+        console.log(str);
     }
 
     componentDidUpdate (prevProps) {

@@ -56,6 +56,7 @@ const Selector = props => {
         >
             <Box className={styles.listArea}>
                 {items.map((item, index) => (
+
                     <SortableAsset
                         id={item.name}
                         index={isRelevantDrag ? ordering.indexOf(index) : index}
@@ -82,6 +83,7 @@ const Selector = props => {
                             onDuplicateButtonClick={onDuplicateClick}
                             onExportButtonClick={onExportClick}
                         />
+                        {/*{console.log(item.dragPayload)}*/}
                     </SortableAsset>
                 ))}
             </Box>

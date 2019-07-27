@@ -14,6 +14,7 @@ import supportedBrowser from '../lib/supported-browser';
 
 import styles from './index.css';
 
+
 // Register "base" page view
 analytics.pageview('/');
 
@@ -31,5 +32,5 @@ if (supportedBrowser()) {
     const WrappedBrowserModalComponent = AppStateHOC(BrowserModalComponent, true /* localesOnly */);
     const handleBack = () => {};
     // eslint-disable-next-line react/jsx-no-bind
-    ReactDOM.render(<WrappedBrowserModalComponent onBack={handleBack} />, appTarget);
+    ReactDOM.render(<WrappedBrowserModalComponent onBack={handleBack}/>, appTarget);
 }

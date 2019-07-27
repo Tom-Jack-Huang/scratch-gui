@@ -33,7 +33,7 @@ import TelemetryModal from '../telemetry-modal/telemetry-modal.jsx';
 
 import layout, {STAGE_SIZE_MODES} from '../../lib/layout-constants';
 import {resolveStageSize} from '../../lib/screen-utils';
-
+import {Spin} from 'antd';
 import styles from './gui.css';
 import addExtensionIcon from './icon--extensions.svg';
 import codeIcon from './icon--code.svg';
@@ -115,6 +115,7 @@ const GUIComponent = props => {
         targetIsStage,
         telemetryModalVisible,
         tipsLibraryVisible,
+        showSpin,
         vm,
         ...componentProps
     } = omit(props, 'dispatch');
@@ -157,6 +158,12 @@ const GUIComponent = props => {
                 dir={isRtl ? 'rtl' : 'ltr'}
                 {...componentProps}
             >
+                <div
+                    className={classNames(styles.SpinMask,showSpin?styles.SpinMaskShow:null)}
+                    onClick={(e)=>{e.stopPropagation();}}
+                >
+                    <Spin spinning={showSpin} size="large" className={styles.showSip}/>
+                </div>
                 {telemetryModalVisible ? (
                     <TelemetryModal
                         onCancel={onTelemetryModalCancel}
@@ -349,6 +356,7 @@ const GUIComponent = props => {
                     </Box>
                 </Box>
                 <DragLayer/>
+
             </Box>
         );
     }}</MediaQuery>);
@@ -414,7 +422,8 @@ GUIComponent.propTypes = {
     targetIsStage: PropTypes.bool,
     telemetryModalVisible: PropTypes.bool,
     tipsLibraryVisible: PropTypes.bool,
-    vm: PropTypes.instanceOf(VM).isRequired
+    vm: PropTypes.instanceOf(VM).isRequired,
+    showSpin:PropTypes.bool
 };
 GUIComponent.defaultProps = {
     backpackHost: null,
@@ -441,7 +450,8 @@ GUIComponent.defaultProps = {
 
 const mapStateToProps = state => ({
     // This is the button's mode, as opposed to the actual current state
-    stageSizeMode: state.scratchGui.stageSize.stageSize
+    stageSizeMode: state.scratchGui.stageSize.stageSize,
+    showSpin:state.scratchGui.userInfo.showSpin
 });
 
 export default injectIntl(connect(

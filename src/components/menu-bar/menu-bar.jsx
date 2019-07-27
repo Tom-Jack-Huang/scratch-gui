@@ -78,6 +78,7 @@ import sharedMessages from '../../lib/shared-messages';
 
 import AutoLoadFile from '@hlTools/autoLoadFile.jsx';
 
+import SaveFile from '@hlTools/saveFile.jsx'
 import LoginMenu from './loginMenu.jsx';
 import './menul.less';
 import {Icon, message} from 'antd';
@@ -172,7 +173,8 @@ class MenuBar extends React.Component {
             'handleENLanage',
             'onClickLogoMy',
             'loginClick',
-            'onLogOutClick'
+            'onLogOutClick',
+            'handleSaveToServer'
         ]);
 
     }
@@ -300,7 +302,16 @@ class MenuBar extends React.Component {
             }
         };
     }
-
+    handleSaveToServer(downloadProjectCallback){
+        return () => {
+            this.props.onRequestCloseFile();
+            downloadProjectCallback();
+            if (this.props.onProjectTelemetryEvent) {
+                const metadata = collectMetadata(this.props.vm, this.props.projectTitle, this.props.locale);
+                this.props.onProjectTelemetryEvent('projectDidSave', metadata);
+            }
+        };
+    }
     handleLanguageMouseUp (e) {
         if (!this.props.languageMenuOpen) {
             this.props.onClickLanguage(e);
@@ -522,6 +533,16 @@ class MenuBar extends React.Component {
                                             />
                                         </MenuItem>
                                     )}</SB3Downloader>
+                                    <SaveFile>
+                                        {(className, downloadProjectCallback)=>(
+                                            <MenuItem
+                                                className={className}
+                                                onClick={this.handleSaveToServer(downloadProjectCallback)}
+                                            >
+                                                保存到个人中心
+                                            </MenuItem>
+                                        )}
+                                    </SaveFile>
                                 </MenuSection>
                             </MenuBarMenu>
                         </div>
@@ -831,6 +852,7 @@ class MenuBar extends React.Component {
                             closeLoginMenu={this.props.onRequestCloseLogin}
                             visible={this.props.loginMenuOpen}
                         />
+
                     </div>
                 </div>
 
@@ -906,7 +928,6 @@ MenuBar.defaultProps = {
         console.log('renderLogin');
 
     }
-
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -932,6 +953,7 @@ const mapStateToProps = (state, ownProps) => {
             (ownProps.authorUsername === user.username),
         vm: state.scratchGui.vm,
         closeAccountMenu: PropTypes.func
+
     };
 };
 

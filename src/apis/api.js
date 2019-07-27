@@ -1,4 +1,4 @@
-import {getAB, get, post} from '@hlTools/HLAxios.js';
+import {getAB, get, post,uploadFile} from '@hlTools/HLAxios.js';
 
 /**
  * 从服务区获取sb3文件
@@ -33,8 +33,22 @@ const userLogin = (params) => {
     return post('/edu/login', params);
 };
 
+/**
+ * 获取头像
+ * @returns {Promise<AxiosResponse<T>>}
+ */
 const getAvatar = () => {
     return get('/edu/user/avatar');
+};
+
+/**
+ * 上传文件
+ * @param fileName 文件名
+ * @param file 文件
+ * @returns {Promise<AxiosResponse<T>>}
+ */
+const uploadSB3File = (fileName,file)=>{
+  return  uploadFile('/file/file',fileName,file);
 };
 
 export {
@@ -42,5 +56,6 @@ export {
     getleftData,
     getCaptcha,
     userLogin,
-    getAvatar
+    getAvatar,
+    uploadSB3File
 };

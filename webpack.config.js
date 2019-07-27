@@ -12,6 +12,8 @@ var autoprefixer = require('autoprefixer');
 var postcssVars = require('postcss-simple-vars');
 var postcssImport = require('postcss-import');
 
+process.env.NODE_ENV =  'development';//production
+
 const STATIC_PATH = process.env.STATIC_PATH || '/static';
 
 const base = {

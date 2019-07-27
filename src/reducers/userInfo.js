@@ -1,10 +1,12 @@
 import {LoadingState} from '@reducers/project-state';
 
 const HL_USER = 'scratch-gui/userInfo/user';
-const PS_LOGIN = 'scratch-gui/userInfo/pslogin'
+const PS_LOGIN = 'scratch-gui/userInfo/pslogin';
+const SHOW_SPIN = 'scratch-gui/userInfo/showSpin';
 const initialState = {
     user: {},
-    pslogin:false
+    pslogin: false,
+    showSpin:false
 };
 const reducer = function (state, action) {
     if (typeof state === 'undefined') state = initialState;
@@ -13,9 +15,14 @@ const reducer = function (state, action) {
             return Object.assign({}, state, {
                 user: action.user
             });
-        case PS_LOGIN:{
+        case PS_LOGIN: {
             return Object.assign({}, state, {
                 pslogin: action.pslogin
+            });
+        }
+        case SHOW_SPIN:{
+            return Object.assign({}, state, {
+                showSpin: action.showSpin
             });
         }
         default:
@@ -29,14 +36,20 @@ const setUserInfo = function (user) {
     };
 };
 
-const isPassLogin = pslogin=>({
+const isPassLogin = pslogin => ({
     type: PS_LOGIN,
     pslogin: pslogin
+});
+
+const isShowSpin = showSpin => ({
+    type: SHOW_SPIN,
+    showSpin: showSpin
 });
 
 export {
     reducer as default,
     initialState as userinfoInitialState,
     setUserInfo,
-    isPassLogin
+    isPassLogin,
+    isShowSpin
 };
