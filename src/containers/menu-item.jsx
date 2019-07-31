@@ -12,13 +12,18 @@ class MenuItem extends React.Component {
         ]);
     }
     navigateToHref () {
-        if (this.props.href) window.location.href = this.props.href;
+        if (this.props.href) {
+            // window.location.href = this.props.href;
+            window.open(this.props.href);
+            this.props.onMenuClose();
+        }
     }
     render () {
         const {
             children,
             className,
-            onClick
+            onClick,
+            onMenuClose
         } = this.props;
         const clickAction = onClick ? onClick : this.navigateToHref;
         return (
@@ -37,7 +42,8 @@ MenuItem.propTypes = {
     className: PropTypes.string,
     // can take an onClick prop, or take an href and build an onClick handler
     href: PropTypes.string,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    onMenuClose:PropTypes.func
 };
 
 export default MenuItem;

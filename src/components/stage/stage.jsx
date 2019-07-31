@@ -35,7 +35,7 @@ const StageComponent = props => {
     const stageDimensions = getStageDimensions(stageSize, isFullScreen);
 
     return (
-        <div>
+        <div >
             <Box
                 className={classNames({
                     [styles.stageWrapper]: !isFullScreen,
@@ -123,6 +123,7 @@ const StageComponent = props => {
                     height={0}
                     ref={dragRef}
                     width={0}
+
                 />
             </Box>
             {isColorPicking ? (

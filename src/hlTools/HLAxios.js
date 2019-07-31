@@ -92,12 +92,12 @@ export function post (url, params = {}) {
  */
 export function getAB (url, params = {}) {
     console.log(url);
-    return instance.get('http://www.passionet.net/group1/M01/2019/07/27/10/42/F696342588A14961B433692ED528643A.blob', {
+    return instance.get(url, {
         params: params,
         responseType: 'arraybuffer'
     })
         .then(response => {
-            console.log(response);
+
             if (response && response.status === 200) {
                 return response.data;
             } else {
@@ -117,8 +117,7 @@ export function getAB (url, params = {}) {
  * @param file
  * @returns {Promise<AxiosResponse<T>>}
  */
-export function uploadFile (url, fileName, file) {
-    console.log(fileName);
+export function uploadFile (url,file) {
     let form = new FormData();
     form.append('file', file);
     return instance.post(url, form, {

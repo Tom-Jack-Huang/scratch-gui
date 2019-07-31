@@ -1,5 +1,5 @@
 import ScratchStorage from 'scratch-storage';
-
+import {connect} from 'react-redux';
 import defaultProject from './default-project';
 
 /**

@@ -539,7 +539,7 @@ class MenuBar extends React.Component {
                                                 className={className}
                                                 onClick={this.handleSaveToServer(downloadProjectCallback)}
                                             >
-                                                保存到个人中心
+                                                保存到我的作品
                                             </MenuItem>
                                         )}
                                     </SaveFile>

@@ -23,7 +23,7 @@ import {
     closeCostumeLibrary,
     closeBackdropLibrary,
     closeTelemetryModal,
-    openExtensionLibrary
+    openExtensionLibrary, openLoadingProject
 } from '../reducers/modals';
 
 import FontLoaderHOC from '../lib/font-loader-hoc.jsx';
@@ -39,10 +39,10 @@ import cloudManagerHOC from '../lib/cloud-manager-hoc.jsx';
 import GUIComponent from '../components/gui/gui.jsx';
 import {setIsScratchDesktop} from '../lib/isScratchDesktop.js';
 
-import {setUserInfo} from '@reducers/userInfo'
+import {setUserInfo, setWorkNo} from '@reducers/userInfo';
 import {setPlayer} from '@reducers/mode';
 import Cookies from 'js-cookie'
-
+import {getQueryString} from '@hlTools/myTools'
 
 const messages = defineMessages({
     defaultProjectTitle: {
@@ -58,10 +58,16 @@ class GUI extends React.Component {
         this.setReduxTitle(this.props.projectTitle);
         this.props.onStorageInit(storage);
         this.props.onVmInit(this.props.vm);
-        this.getUserInfoFromCook();
+        let workNo = getQueryString('workNo');
+        if (workNo && workNo.length>0) {
+            this.props.onSetProjectNo(workNo);
+            this.props.onLoadingStarted();
+        }
     }
     componentWillMount () {
+        //设置是否是player模式
         // this.props.loadIsPlayer();
+        this.getUserInfoFromCook();
     }
 
     getUserInfoFromCook(){
@@ -78,8 +84,8 @@ class GUI extends React.Component {
             };
             this.props.setCookeUserInfo(users);
         }
-        let str=location.href;
-        console.log(str);
+
+
     }
 
     componentDidUpdate (prevProps) {
@@ -132,6 +138,8 @@ class GUI extends React.Component {
             isLoading,
             loadingStateVisible,
             loadIsPlayer,
+            onSetProjectNo,
+            onLoadingStarted,
             ...componentProps
         } = this.props;
         return (
@@ -171,7 +179,9 @@ GUI.propTypes = {
     vm: PropTypes.instanceOf(VM).isRequired,
     setCookeUserInfo:PropTypes.func,
     isLogin:PropTypes.bool,
-    loadIsPlayer:PropTypes.func
+    loadIsPlayer:PropTypes.func,
+    onSetProjectNo:PropTypes.func,
+    onLoadingStarted:PropTypes.func
 };
 
 GUI.defaultProps = {
@@ -226,7 +236,9 @@ const mapDispatchToProps = dispatch => ({
     setCookeUserInfo:user=>{
         dispatch(setUserInfo(user));
     },
-    loadIsPlayer:()=>dispatch(setPlayer(true))
+    loadIsPlayer:()=>dispatch(setPlayer(true)),
+    onSetProjectNo:id=>dispatch(setWorkNo(id)),
+    onLoadingStarted: () => dispatch(openLoadingProject())
 });
 
 const ConnectedGUI = injectIntl(connect(

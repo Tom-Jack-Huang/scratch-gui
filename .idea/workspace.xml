@@ -3,8 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="7c08ae9f-949b-4f77-ac48-0765d8b15e8b" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/blocks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/blocks.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/define-dynamic-block.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/define-dynamic-block.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/account-nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/account-nav.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/user-avatar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/user-avatar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stage-wrapper/stage-wrapper.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stage-wrapper/stage-wrapper.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stage/stage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stage/stage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/camera-modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/camera-modal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/gui.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/gui.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/menu-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/menu-item.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/sb-file-uploader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/sb-file-uploader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hlTools/HLAxios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/HLAxios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hlTools/myTools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/myTools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hlTools/saveFile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/saveFile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/storage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/storage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit/util/define-dynamic-block.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit/util/define-dynamic-block.test.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +47,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/hlTools" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -46,6 +63,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/hlTools" />
       <recent name="$PROJECT_DIR$/src/images" />
     </key>
   </component>
@@ -95,7 +113,12 @@
       <workItem from="1564041184961" duration="5741000" />
       <workItem from="1564102997767" duration="12426000" />
       <workItem from="1564189846475" duration="5993000" />
-      <workItem from="1564216196909" duration="365000" />
+      <workItem from="1564216196909" duration="2921000" />
+      <workItem from="1564362884914" duration="8601000" />
+      <workItem from="1564450177927" duration="7520000" />
+      <workItem from="1564465164088" duration="11462000" />
+      <workItem from="1564535857028" duration="1194000" />
+      <workItem from="1564537309171" duration="4774000" />
     </task>
     <servers />
   </component>

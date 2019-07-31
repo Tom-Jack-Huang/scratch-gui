@@ -22,6 +22,7 @@ import {
 import {
     closeFileMenu
 } from '../reducers/menus';
+import {setWorkNo} from '@reducers/userInfo';
 
 /**
  * SBFileUploader component passes a file input, load handler and props to its child.
@@ -98,6 +99,8 @@ class SBFileUploader extends React.Component {
             projectChanged,
             userOwnsProject
         } = this.props;
+        //从本地加载了，将保存的项目ID值空
+        this.props.onSetProjectNo('');
 
         const thisFileInput = e.target;
         if (thisFileInput.files) { // Don't attempt to load if no file was selected
@@ -185,7 +188,8 @@ SBFileUploader.propTypes = {
     userOwnsProject: PropTypes.bool,
     vm: PropTypes.shape({
         loadProject: PropTypes.func
-    })
+    }),
+    onSetProjectNo:PropTypes.func
 };
 SBFileUploader.defaultProps = {
     className: ''
@@ -209,7 +213,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         dispatch(closeFileMenu());
     },
     requestProjectUpload: loadingState => dispatch(requestProjectUpload(loadingState)),
-    onLoadingStarted: () => dispatch(openLoadingProject())
+    onLoadingStarted: () => dispatch(openLoadingProject()),
+    onSetProjectNo:id=>dispatch(setWorkNo(id))
 });
 
 // Allow incoming props to override redux-provided props. Used to mock in tests.

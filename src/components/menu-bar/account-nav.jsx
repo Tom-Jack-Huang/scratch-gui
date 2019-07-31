@@ -44,6 +44,7 @@ const AccountNavComponent = ({
                 <UserAvatar
                     className={styles.avatar}
                     imageUrl={thumbnailUrl}
+
                 />
             ) : (
                 <span className={styles.profileName}>
@@ -67,13 +68,16 @@ const AccountNavComponent = ({
             place={isRtl ? 'right' : 'left'}
             onRequestClose={onClose}
         >
-            <MenuItemContainer href='http://192.168.2.170:8088/edu/course/my'>
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/course/my' onMenuClose={onClose}>
                 我的课程
             </MenuItemContainer>
-            <MenuItemContainer href='http://192.168.2.170:8088/edu/order/my'>
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/work/my' onMenuClose={onClose}>
+                我的作品
+            </MenuItemContainer>
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/order/my' onMenuClose={onClose}>
                 我的订单
             </MenuItemContainer>
-            <MenuItemContainer href='http://192.168.2.170:8088/edu/user'>
+            <MenuItemContainer href='http://192.168.2.170:8088/edu/user' onMenuClose={onClose}>
                账号设置
             </MenuItemContainer>
             {/*

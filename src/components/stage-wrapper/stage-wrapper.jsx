@@ -31,12 +31,13 @@ const StageWrapperComponent = function (props) {
                     vm={vm}
                 />
             </Box>
-            <Box className={styles.stageCanvasWrapper}>
+            <Box className={styles.stageCanvasWrapper} >
                 {
                     isRendererSupported ?
                         <Stage
                             stageSize={stageSize}
                             vm={vm}
+                            
                         /> :
                         null
                 }

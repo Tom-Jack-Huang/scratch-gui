@@ -10,6 +10,7 @@ import {
     closeCameraCapture
 } from '../reducers/modals';
 
+
 class CameraModal extends React.Component {
     constructor (props) {
         super(props);
@@ -31,6 +32,8 @@ class CameraModal extends React.Component {
             access: false,
             loaded: false
         };
+
+
     }
     componentWillUnmount () {
         if (this.videoDevice) {
@@ -59,6 +62,7 @@ class CameraModal extends React.Component {
             this.videoDevice = new ModalVideoManager(this.canvas);
             this.videoDevice.enableVideo(this.handleAccess, this.handleLoaded);
         }
+
     }
     handleSubmit () {
         if (!this.state.capture) return;
