@@ -2,26 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c08ae9f-949b-4f77-ac48-0765d8b15e8b" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/audio-trimmer/audio-selector.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/audio-trimmer/playhead.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/audio-trimmer/selection-handle.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--copy-to-new.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--copy.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--delete.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--fade-in.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--fade-out.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--mute.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--paste.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--play.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--stop.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/audio-selector.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/audio/effects/fade-effect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/audio/effects/mute-effect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/apis/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apis/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/account-nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/account-nav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/user-avatar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/user-avatar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stage-wrapper/stage-wrapper.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stage-wrapper/stage-wrapper.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stage/stage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stage/stage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/camera-modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/camera-modal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/gui.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/gui.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/menu-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/menu-item.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/sb-file-uploader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/sb-file-uploader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/HLAxios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/HLAxios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/autoLoadFile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/myTools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/myTools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hlTools/saveFile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hlTools/saveFile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/storage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/storage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit/util/define-dynamic-block.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit/util/define-dynamic-block.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/asset-panel/asset-panel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/asset-panel/asset-panel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/audio-trimmer/audio-trimmer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/audio-trimmer/audio-trimmer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/audio-trimmer/audio-trimmer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/audio-trimmer/audio-trimmer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/audio-trimmer/icon--handle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/audio-trimmer/icon--handle.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon-button/icon-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon-button/icon-button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon-button/icon-button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon-button/icon-button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sound-editor/icon--lounder.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sound-editor/sound-editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sound-editor/sound-editor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sound-editor/sound-editor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sound-editor/sound-editor.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/waveform/waveform.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/waveform/waveform.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/audio-trimmer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/audio-trimmer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/record-modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/record-modal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/sound-editor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/sound-editor.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/audio/audio-effects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/audio/audio-effects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/audio/audio-util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/audio/audio-util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/audio/effects/echo-effect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/audio/effects/echo-effect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/audio/effects/robot-effect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/audio/effects/robot-effect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/audio/effects/volume-effect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/audio/effects/volume-effect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/__mocks__/audio-effects.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/__mocks__/audio-effects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/integration/sounds.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/integration/sounds.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit/components/__snapshots__/sound-editor.test.jsx.snap" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit/components/__snapshots__/sound-editor.test.jsx.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit/components/sound-editor.test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit/components/sound-editor.test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit/containers/sound-editor.test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit/containers/sound-editor.test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit/util/audio-effects.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit/util/audio-effects.test.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +140,8 @@
       <workItem from="1564450177927" duration="7520000" />
       <workItem from="1564465164088" duration="11462000" />
       <workItem from="1564535857028" duration="1194000" />
-      <workItem from="1564537309171" duration="4774000" />
+      <workItem from="1564537309171" duration="5998000" />
+      <workItem from="1564622507817" duration="1997000" />
     </task>
     <servers />
   </component>
