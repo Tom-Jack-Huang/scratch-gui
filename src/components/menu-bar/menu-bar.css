@@ -4,6 +4,7 @@
 
 .menu-bar {
     display: flex;
+    /*display: none;*/
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
@@ -30,7 +31,9 @@
     background-color: $motion-primary;
     color: $ui-white;
 }
-
+.menu-bar-hid {
+    display: none;
+}
 .main-menu {
     display: flex;
     flex-direction: row;

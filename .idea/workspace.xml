@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7c08ae9f-949b-4f77-ac48-0765d8b15e8b" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sound-editor/icon--fade-in.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--fade-in.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sound-editor/icon--fade-out.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sound-editor/icon--fade-out.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/audio-selector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/audio-selector.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/audio-trimmer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/audio-trimmer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/sounds.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/integration/sounds.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu-bar/menu-bar.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +41,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
@@ -66,6 +61,15 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
@@ -107,7 +111,15 @@
       <workItem from="1564465164088" duration="11462000" />
       <workItem from="1564535857028" duration="1194000" />
       <workItem from="1564537309171" duration="5998000" />
-      <workItem from="1564622507817" duration="3598000" />
+      <workItem from="1564622507817" duration="5062000" />
+      <workItem from="1564641079539" duration="266000" />
+      <workItem from="1564641380382" duration="295000" />
+      <workItem from="1564641744078" duration="35000" />
+      <workItem from="1564641792384" duration="248000" />
+      <workItem from="1564642052492" duration="467000" />
+      <workItem from="1564642523717" duration="3840000" />
+      <workItem from="1564708711338" duration="305000" />
+      <workItem from="1564709302561" duration="990000" />
     </task>
     <servers />
   </component>

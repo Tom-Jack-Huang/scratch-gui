@@ -445,7 +445,7 @@ class MenuBar extends React.Component {
                                     >
                                         {locales['zh-cn'].name}
                                         <span
-                                            className={(this.props.locale != 'zh-cn') ? styles.ishidlanlge : ''}
+                                            className={(this.props.locale !== 'zh-cn') ? styles.ishidlanlge : ''}
                                         >
                                             <Icon type="check" className={classNames(styles.lanageIconL)}/>
                                         </span>
@@ -453,7 +453,7 @@ class MenuBar extends React.Component {
                                     <MenuItem onClick={this.handleENLanage}
                                     >
                                         {locales['en'].name}
-                                        <span className={(this.props.locale != 'en') ? styles.ishidlanlge : ''}
+                                        <span className={(this.props.locale !== 'en') ? styles.ishidlanlge : ''}
                                         >
                                             <Icon type="check" className={classNames(styles.lanageIconL)}/>
                                         </span>
